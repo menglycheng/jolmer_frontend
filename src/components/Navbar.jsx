@@ -21,10 +21,10 @@ const Navbar = () => {
           </button>
         ) : (
           <div className="space-x-3 md:space-x-8">
-            <Link href="/about" className="font-semibold text-xl">
+            <Link href="/about" className="font-semibold text-lg hover:underline hover:text-primary-blue">
               About us
             </Link>
-            <button className="py-2 px-6 bg-primary-blue rounded-full text-base text-white font-bold">
+            <button className="py-1 px-6 bg-primary-blue rounded-full text-base text-white font-bold">
               Join us
             </button>
           </div>
