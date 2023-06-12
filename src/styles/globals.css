@@ -23,8 +23,11 @@ body, html {
 }
 
 @layer components {
+  .btn-hover {
+    @apply  hover:text-primary-blue hover:border-primary-blue;
+  }
   .button {
-    @apply flex items-center space-x-2 py-2 px-2 md:px-6 rounded-full border-2 border-primary-lowBlack text-sm md:text-xl text-primary-lowBlack font-semibold;
+    @apply flex items-center space-x-2 py-0 px-2 md:px-6 rounded-full border-2 border-primary-lowBlack text-base md:text-lg text-primary-lowBlack font-semibold;
   }
   .active {
     @apply flex items-center space-x-1 md:space-x-2 py-2 px-2 md:px-6 bg-primary-blue text-white rounded-full text-sm md:text-xl  font-semibold

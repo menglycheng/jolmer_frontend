@@ -52,39 +52,39 @@ const HomePage = () => {
   return (
     <div className="px-5 max-w-screen-xl mx-auto">
       <div className="flex justify-between items-center">
-        <h3 className="hidden lg:inline text-3xl text-primary-lowBlack font-bold">
+        <h3 className="hidden lg:inline text-2xl text-primary-lowBlack font-bold">
           Explore
         </h3>
         <div className="flex space-x-2 md:space-x-5">
           <button
             onClick={handleShowAll}
-            className={`flex items-center space-x-1 md:space-x-2 py-2 px-2 md:px-6 ${
+            className={`flex items-center space-x-1 md:space-x-2 py-0 px-2 md:px-6 ${
               showAll
                 ? "bg-primary-blue text-white"
-                : "border-2 border-primary-lowBlack text-primary-lowBlack"
-            } rounded-full text-sm md:text-xl  font-semibold`}
+                : "border-2 border-primary-lowBlack text-primary-lowBlack btn-hover"
+            } rounded-full text-base md:text-lg  font-semibold`}
           >
             <WalletIcon className="icon" />
             <p>All</p>
           </button>
           <button
             onClick={handleShowCompetition}
-            className={`flex items-center space-x-1 md:space-x-2 py-2 px-2 md:px-6 ${
+            className={`flex items-center space-x-1 md:space-x-2 py-0 px-2 md:px-6 ${
               showCompetition
                 ? "bg-primary-blue text-white"
-                : "border-2 border-primary-lowBlack text-primary-lowBlack"
-            } rounded-full text-sm md:text-xl  font-semibold`}
+                : "border-2 border-primary-lowBlack text-primary-lowBlack btn-hover"
+            } rounded-full text-base md:text-lg  font-semibold `}
           >
             <MegaphoneIcon className="icon" />
             <p>Competition</p>
           </button>
           <button
             onClick={handleShowVolunteer}
-            className={`flex items-center space-x-1 md:space-x-2 py-2 px-2 md:px-6 ${
+            className={`flex items-center space-x-1 md:space-x-2 py-0 px-2 md:px-6 ${
               showVolunteer
                 ? "bg-primary-blue text-white"
-                : "border-2 border-primary-lowBlack text-primary-lowBlack"
-            } rounded-full text-sm md:text-xl  font-semibold`}
+                : "border-2 border-primary-lowBlack text-primary-lowBlack btn-hover"
+            } rounded-full text-base md:text-lg  font-semibold`}
           >
             <BriefcaseIcon className="icon" />
             <p>Volunteer</p>
@@ -92,7 +92,7 @@ const HomePage = () => {
         </div>
         <div className="flex space-x-2 md:space-x-5">
           <div className="relative">
-            <button onClick={togglePopup} className="relative button">
+            <button onClick={togglePopup} className="relative button btn-hover">
               <p>Filters</p>
             </button>
             {isPopupOpen && (
@@ -116,7 +116,7 @@ const HomePage = () => {
             )}
           </div>
 
-          <button className="hidden md:inline py-2 px-2 md:px-4 rounded-full border-2 border-primary-lowBlack text-primary-lowBlack font-semibold">
+          <button className="hidden btn-hover md:inline py-0 px-2 md:px-4 rounded-full border-2 border-primary-lowBlack text-primary-lowBlack font-semibold">
             <MagnifyingGlassIcon className="icon" />
           </button>
         </div>
