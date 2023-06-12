@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body, html { 
+  font-family: 'Quicksand', sans-serif;
+}
+
+@layer components {
+  .button {
+    @apply flex items-center space-x-2 py-2 px-2 md:px-6 rounded-full border-2 border-primary-lowBlack text-sm md:text-xl text-primary-lowBlack font-semibold;
+  }
+  .active {
+    @apply flex items-center space-x-1 md:space-x-2 py-2 px-2 md:px-6 bg-primary-blue text-white rounded-full text-sm md:text-xl  font-semibold
+  }
+  .icon{
+    @apply w-4 h-4 md:w-6 md:h-6;
+  }
+}
