@@ -24,9 +24,11 @@ const Navbar = () => {
             <Link href="/about" className="font-semibold text-lg hover:underline hover:text-primary-blue">
               About us
             </Link>
-            <button className="py-1 px-6 bg-primary-blue rounded-full text-base text-white font-bold">
+            <Link href="/login" >
+              <button className="py-1 px-6 bg-primary-blue rounded-full text-base text-white font-bold">
               Join us
-            </button>
+              </button>
+            </Link>
           </div>
         )}
       </header>
