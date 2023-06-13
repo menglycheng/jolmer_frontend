@@ -6,12 +6,13 @@ import { useRouter } from "next/router";
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const isLoginPage = router.pathname === "/login";
+  const isRegisterPage = router.pathname === "/register";
 
   return (
     <div className="flex flex-col min-h-screen">
-      {!isLoginPage && <Navbar />}
+      {!isLoginPage && !isRegisterPage && <Navbar />}
       <Component {...pageProps} />
-      {!isLoginPage && <Footer />}
+      {!isLoginPage && !isRegisterPage && <Footer />}
     </div>
   );
 }
