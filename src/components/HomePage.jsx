@@ -89,7 +89,7 @@ const HomePage = () => {
           <MagnifyingGlassIcon className="icon" />
         </button>
       </div>
-      <div className="grid grid-flow-row md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-4 lg:gap-14 place-content-center mt-20">
+      <div className="grid grid-flow-row md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-6  place-content-center mt-20">
         {filteredData.map((item) => (
           <div
             key={item.id}
