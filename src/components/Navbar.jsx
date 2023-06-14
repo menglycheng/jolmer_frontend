@@ -21,12 +21,15 @@ const Navbar = () => {
           </button>
         ) : (
           <div className="space-x-3 md:space-x-8">
-            <Link href="/about" className="font-semibold text-lg hover:underline hover:text-primary-blue">
+            <Link
+              href="/about"
+              className="font-semibold text-lg hover:underline hover:text-primary-blue"
+            >
               About us
             </Link>
-            <Link href="/login" >
+            <Link href="/login">
               <button className="py-1 px-6 bg-primary-blue rounded-full text-base text-white font-bold">
-              Join us
+                Join us
               </button>
             </Link>
           </div>

@@ -1,3 +1,4 @@
+import NavbarLoginRegister from "@/components/NavbarLoginRegister";
 import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -6,16 +7,8 @@ const Login = () => {
     
   return (
   <div>
-     <header className="top-0 px-5 py-5 flex items-center justify-between max-w-screen-xl mx-auto z-20">
-     <Link
-          href="/"
-          className="flex items-center space-x-2 text-primary-blue"
-        >
-          <FaceSmileIcon className="w-9 h-9" />
-          <p className="font-bold text-xl">Jolmer</p>
-        </Link>
-        </header>
-      <div className="px-5 py-0 max-w-screen-xl mx-auto mt-10">
+    <NavbarLoginRegister />
+      <div className="px-5 py-0 max-w-screen-xl mx-auto mt-10 mb-6">
         <div className="flex flex-col items-center space-y-4">
           <FaceSmileIcon className="w-10 h-10 border border-primary-lowOrange  rounded-lg p-2" />
           <p className="font-bold text-xl md:text-2xl lg:text-3xl">Welcome Back</p>
