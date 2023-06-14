@@ -5,11 +5,11 @@ const TermOfUse = () => {
     <div className="px-5 py-10 max-w-screen-xl mx-auto mt-10">
       <div className="flex justify-between lg:space-x-72 space-x-10">
         <div>
-          <h1 className="font-bold text-4xl md:text-5xl lg:text-6xl text-primary-lowBlack">
+          <h1 className="font-bold text-3xl md:text-4xl  text-primary-lowBlack">
             Term of Condition
           </h1>
           <div className="h-[4px] rounded-full bg-primary-blue w-16 mt-2"></div>
-          <p className="font-medium mt-5 md:text-xl max-w-xl text-primary-lowBrown">
+          <p className="font-medium mt-5 max-w-xl text-primary-lowBrown text-sm md:text-base lg:text-lg">
             So you think you are at the right place? If yes, every collaboration
             has its own terms of use. Here’s our terms and conditions.
           </p>
@@ -23,10 +23,10 @@ const TermOfUse = () => {
         </div>
       </div>
       <div className="mt-10">
-        <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl text-primary-blue">
+        <h1 className="font-bold text-2xl md:text-3xl  text-primary-blue">
           Term of Use
         </h1>
-        <p className="font-medium mt-4 md:text-xl">
+        <p className="font-medium mt-4 text-sm md:text-base lg:text-lg">
           Your use of Jolmer’s products, software, services and websites
           (referred to collectively as the “Services” in this document) is
           subject to the terms of a legal agreement between you and Jolmer.
@@ -45,10 +45,10 @@ const TermOfUse = () => {
       </div>
 
       <div className="mt-10">
-        <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl text-primary-blue">
+        <h1 className="font-bold text-2xl md:text-3xl text-primary-blue">
           User Aggreement
         </h1>
-        <p className="font-medium mt-4 md:text-xl">
+        <p className="font-medium mt-4 text-sm md:text-base lg:text-lg">
           Your use of Jolmer’s products, software, services and websites
           (referred to collectively as the “Services” in this document) is
           subject to the terms of a legal agreement between you and Jolmer.
