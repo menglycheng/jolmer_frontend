@@ -14,7 +14,7 @@ const Card = ({ data }) => {
             <Image
               width={300}
               height={300}
-              class="rounded-t-lg"
+              class="rounded-t-lg w-full"
               src="/SmartSpark8-Webinar.jpg"
               alt=""
             />
