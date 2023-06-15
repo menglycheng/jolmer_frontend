@@ -66,7 +66,7 @@ const Login = () => {
                 Forgot password?
               </a>
             </div>
-            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-5  border-primary-blue text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96">
+            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-5 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96">
               Login
             </button>
             <div className="flex items-center justify-center text-xs md:text-sm ">
