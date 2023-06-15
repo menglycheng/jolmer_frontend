@@ -17,13 +17,21 @@ const Login = () => {
             Please enter your name and email
           </p>
           <div className="flex flex-col text-base">
-            <button className="bg-white text-black py-2 rounded-md border border-1 my-3 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 ">
-              <img src="/google.png" alt="google" className="w-4 h-4 md:w-6 md:h-6" />
-              <p>Login with Google</p> 
+            <button className="bg-white text-black py-2 rounded-md border border-1 my-3 font-bold border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 ">
+              <img
+                src="/google.png"
+                alt="google"
+                className="w-4 h-4 md:w-6 md:h-6"
+              />
+              <p>Login with Google</p>
             </button>
-            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-3  border-primary-blue text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96">
-              <img src="/Facebook.png" alt="facebook" className="w-4 h-4 md:w-6 md:h-6"/>
-              <p>Login with Facebook</p> 
+            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-3 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96">
+              <img
+                src="/Facebook.png"
+                alt="facebook"
+                className="w-4 h-4 md:w-6 md:h-6"
+              />
+              <p>Login with Facebook</p>
             </button>
 
             <div className="flex items-center py-6 pb-10">
