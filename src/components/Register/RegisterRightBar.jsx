@@ -23,12 +23,13 @@ const RegisterRightBar = () => {
   };
 
   return (
-  <div className="basis-4/6 relative">
-    {renderContent()}
+    <div className="basis-4/6 relative flex items-center justify-center smx:basis-full ">
+      {renderContent()}
 
-    {/* Register Footer */}
-    <RegisterFooter />
-  </div>);
+      {/* Register Footer */}
+      <RegisterFooter />
+    </div>
+  );
 };
 
 export default RegisterRightBar;

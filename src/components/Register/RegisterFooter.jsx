@@ -8,18 +8,20 @@ const RegisterFooter = () => {
     <div className="absolute bottom-16  flex space-x-3 items-center left-1/2 transform -translate-x-1/2">
       <div
         className={`${
-          activeTab === "userDetailTab" ? "w-16" : "w-3"
-        } h-3 bg-primary-blue rounded-full transition-width duration-700`}
+          activeTab === "userDetailTab" ? "w-16 smmxs:w-12" : "w-3 smmxs:w-2"
+        } h-3 smmxs:h-2 bg-primary-blue rounded-full transition-width duration-700`}
       ></div>
       <div
         className={`${
-          activeTab === "choosePasswordTab" ? "w-16" : "w-3"
-        } h-3 bg-primary-blue  rounded-full transition-width duration-700`}
+          activeTab === "choosePasswordTab"
+            ? "w-16 smmxs:w-12"
+            : "w-3 smmxs:w-2"
+        } h-3 smmxs:h-2 bg-primary-blue  rounded-full transition-width duration-700`}
       ></div>
       <div
         className={`${
-          activeTab === "beOrganizerTab" ? "w-16" : "w-3"
-        } h-3 bg-primary-blue rounded-full transition-width duration-700`}
+          activeTab === "beOrganizerTab" ? "w-16 smmxs:w-12" : "w-3 smmxs:w-2"
+        } h-3 smmxs:h-2 bg-primary-blue rounded-full transition-width duration-700`}
       ></div>
     </div>
   );

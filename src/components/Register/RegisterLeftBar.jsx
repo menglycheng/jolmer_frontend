@@ -12,7 +12,7 @@ const RegisterLeftBar = () => {
   };
 
   return (
-    <div className="basis-2/6  bg-primary-lowGray px-24">
+    <div className="basis-2/6 bg-primary-lowGray px-24  smx:hidden ">
       <NavbarLoginRegister />
       <div className="space-y-6 text-primary-lowRed mt-10">
         <button
