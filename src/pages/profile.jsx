@@ -4,7 +4,6 @@ import {
   BriefcaseIcon,
   UserIcon,
   BuildingOfficeIcon,
-  PencilIcon,
 } from "@heroicons/react/24/solid";
 import Card from "@/components/Homepage/Card";
 import { Data } from "../../utils/Data";
@@ -26,6 +25,8 @@ const profile = () => {
             <Image
               width={300}
               height={300}
+              priority={false}
+              alt="profile"
               src="/profile.jpg"
               className="rounded-full w-36 h-36 object-cover"
             />
