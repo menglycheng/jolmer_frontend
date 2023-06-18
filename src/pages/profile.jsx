@@ -7,7 +7,6 @@ import {
 } from "@heroicons/react/24/solid";
 import Card from "@/components/Homepage/Card";
 import { Data } from "../../utils/Data";
-
 import EditProfile from "@/components/EditProfile";
 
 const profile = () => {
