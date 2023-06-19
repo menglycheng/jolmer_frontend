@@ -17,7 +17,7 @@ const Login = () => {
             Please enter your name and email
           </p>
           <div className="flex flex-col text-base">
-            <button className="bg-white text-black py-2 rounded-md border border-1 my-3 font-bold border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 ">
+            <button className="bg-white text-black py-2 rounded-md border border-1 my-3 font-bold border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-gray-200">
               <img
                 src="/google.png"
                 alt="google"
@@ -25,7 +25,7 @@ const Login = () => {
               />
               <p>Login with Google</p>
             </button>
-            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-3 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96">
+            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-3 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-blue-500 ">
               <img
                 src="/Facebook.png"
                 alt="facebook"
@@ -66,7 +66,7 @@ const Login = () => {
                 Forgot password?
               </a>
             </div>
-            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-5 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96">
+            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-5 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-blue-500">
               Login
             </button>
             <div className="flex items-center justify-center text-xs md:text-sm ">

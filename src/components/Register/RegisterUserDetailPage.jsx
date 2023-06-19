@@ -14,7 +14,7 @@ const RegisterUserDetailPage = () => {
           </p>
         </div>
         <div className="flex flex-col text-base">
-            <button className="bg-white text-black py-2 rounded-md border border-1 my-3 font-bold border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 ">
+            <button className="bg-white text-black py-2 rounded-md border border-1 my-3 font-bold border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-gray-200">
               <img
                 src="/google.png"
                 alt="google"
@@ -22,7 +22,7 @@ const RegisterUserDetailPage = () => {
               />
               <p>Signup with Google</p>
             </button>
-            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-3 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96">
+            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-3 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-blue-500">
               <img
                 src="/Facebook.png"
                 alt="facebook"
@@ -49,14 +49,14 @@ const RegisterUserDetailPage = () => {
               placeholder="Enter your lastname"
               className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 mb-4 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
             ></input>
-            <p className="font-bold text-sm">email *</p>
+            <p className="font-bold text-sm">Email *</p>
             <input
               type="email"
               placeholder="Enter your email"
               className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 mb-4 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
             ></input>
 
-            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-5 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96">
+            <button className="bg-primary-blue text-white py-2 rounded-md border border-1 my-5 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-blue-500">
               Continue
             </button>
 
