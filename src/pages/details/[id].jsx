@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Data } from "../../../utils/Data";
 import {
   BuildingOfficeIcon,
+  EyeIcon,
   HeartIcon,
   MapPinIcon,
   UserGroupIcon,
@@ -45,7 +46,7 @@ const detail = ({ item }) => {
                   <p className="text-sm md:text-base">{item.location}</p>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <MapPinIcon className="icon" />
+                  <EyeIcon className="icon" />
                   <p className="text-sm md:text-base">{item.view}</p>
                 </div>
                 <div className="flex items-center space-x-2">
