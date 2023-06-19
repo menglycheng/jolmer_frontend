@@ -16,10 +16,10 @@ const Navbar = () => {
         {token ? (
           <Link
             href="/profile"
-            className="flex items-center justify-center space-x-1 md:space-x-2 w-32 h-10 md:w-36 lg:w-40 lg:h-12 border-primary-blue border-2 rounded-2xl text-lg md:text-xl text-primary-blue font-semibold"
+            className="flex items-center justify-center space-x-1 w-28 h-10 md:w-36  border-primary-blue border-2 rounded-2xl text-base md:text-xl text-primary-blue font-semibold"
           >
             {/* <img src="public/vercel.svg" alt="" /> */}
-            <FaceSmileIcon className="w-9 h-9" />
+            <FaceSmileIcon className="w-7 h-7 md:w-9 md:h-9" />
             <p>Mengly</p>
           </Link>
         ) : (
