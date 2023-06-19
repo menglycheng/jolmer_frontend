@@ -4,6 +4,7 @@ const RegisterBeOrganizerTab = () => {
   return (
     <div>
       <h2>Be Organizer Tab</h2>
+      
     </div>
   );
 };
