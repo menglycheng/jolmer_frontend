@@ -15,9 +15,7 @@ const detail = ({ item }) => {
     <div>
       <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
         <div className="bg-primary-lowBlack relative pb-[30%] md:pb-[20%]">
-          <Image
-            width={300}
-            height={300}
+          <img
             alt="profile"
             src="/SmartSpark8-Webinar.jpg"
             className="object-cover absolute top-0 left-0 w-full h-full"
