@@ -22,7 +22,7 @@ const detail = ({ item }) => {
           />
         </div>
 
-        <div className="px-4">
+        <div className="px-5">
           <div className="relative bg-primary-box bg-opacity-50 rounded-lg mt-5 flex flex-col md:flex-row py-5 justify-center md:justify-between px-5 md:px-12">
             <div className="flex flex-col md:flex-row items-center space-x-5 space-y-1 md:space-y-0 md:p-10">
               <Image
@@ -76,7 +76,7 @@ const detail = ({ item }) => {
             </div>
           </div>
         </div>
-        <div className="px-4">
+        <div className="px-5">
           <div className="relative bg-primary-box bg-opacity-50 rounded-lg mt-5 py-2 px-5 md:px-10">
             <p className="font-bold text-sm md:text-base text-primary-blue">
               Description
@@ -84,7 +84,7 @@ const detail = ({ item }) => {
             <div className="h-[4px] rounded-full bg-primary-blue w-12 mt-1"></div>
           </div>
         </div>
-        <div className="px-4">
+        <div className="px-5">
           <div className="relative bg-primary-box bg-opacity-50 rounded-lg mt-5 py-5 px-5 md:px-10">
             <h2 className="font-semibold text-xl md:text-2xl">Smart Spark</h2>
             <p className="text-sm md:text-base">
