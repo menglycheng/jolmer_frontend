@@ -1,13 +1,15 @@
 import React from "react";
 import { EyeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import Link from "next/link";
 
 const Card = ({ data }) => {
   return (
     <div className="grid grid-flow-row md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-6  place-content-center mt-20">
       {data.map((item) => (
-        <div
+        <Link
           key={item.id}
+          href={`/details/${item.id}`}
           class="max-w-sm bg-white border border-gray-200 rounded-xl drop-shadow-md"
         >
           <div class="relative">
@@ -41,7 +43,7 @@ const Card = ({ data }) => {
               </div>
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
