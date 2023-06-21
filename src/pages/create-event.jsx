@@ -1,8 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import EditDescription from "@/components/EditDescription";
 
 const createEvent = () => {
+  const EventForm = {
+    event_name: "",
+    location: "",
+    categorize: "",
+    deadline: "",
+    time: "",
+    file: null,
+    description: "",
+  };
+  const [formEvent, setFormEvent] = useState(EventForm);
+
+  const handleChange = (event) => {
+    const { name, value, files } = event.target;
+    setFormEvent((prevFormEvent) => ({
+      ...prevFormEvent,
+      [name]: files ? files[0] : value,
+    }));
+  };
+
+  const handleDescriptionChange = (value) => {
+    setFormEvent((prevFormEvent) => ({
+      ...prevFormEvent,
+      description: value,
+    }));
+  };
+
+  const handleSave = () => {
+    console.log("Form data:", formEvent);
+  };
+
+  const handleCancel = () => {
+    setFormEvent(EventForm);
+  };
+
   return (
     <div>
       <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
@@ -28,6 +62,8 @@ const createEvent = () => {
                       type="text"
                       id="event_name"
                       name="event_name"
+                      value={formEvent.event_name}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -40,6 +76,8 @@ const createEvent = () => {
                         type="text"
                         id="location"
                         name="location"
+                        value={formEvent.location}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -50,9 +88,11 @@ const createEvent = () => {
                         className="w-full rounded-sm font-light text-sm md:text-base focus:bg-transparent  bg-primary-input shadow px-2 py-1"
                         id="categorize"
                         name="categorize"
+                        value={formEvent.categorize}
+                        onChange={handleChange}
                       >
-                        <option value="Male">Competition</option>
-                        <option value="Female">Volunteer</option>
+                        <option value="Competition">Competition</option>
+                        <option value="Volunteer">Volunteer</option>
                       </select>
                     </div>
                   </div>
@@ -66,6 +106,8 @@ const createEvent = () => {
                         type="date"
                         id="deadline"
                         name="deadline"
+                        value={formEvent.deadline}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -77,6 +119,8 @@ const createEvent = () => {
                         type="text"
                         id="time"
                         name="time"
+                        value={formEvent.time}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -91,7 +135,13 @@ const createEvent = () => {
                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
                       <PlusIcon className="text-primary-lowBlack w-[20%] md:w-[30%] opacity-50" />
                     </div>
-                    <input id="dropzone-file" type="file" class="hidden" />
+                    <input
+                      id="dropzone-file"
+                      type="file"
+                      className="hidden"
+                      name="file"
+                      onChange={handleChange}
+                    />
                   </label>
                 </div>
               </div>
@@ -105,16 +155,25 @@ const createEvent = () => {
             <div className="w-full h-[1px] bg-primary-lowBlack opacity-20" />
             <div className="px-5 md:px-10 py-5 ">
               <div className="bg-primary-input rounded-lg">
-                <EditDescription />
+                <EditDescription
+                  value={formEvent.description}
+                  onChange={handleDescriptionChange}
+                />
               </div>
             </div>
           </div>
           {/* Button */}
           <div className="mt-10 space-x-2 flex justify-end">
-            <button className="btn-hover2 w-16 h-8 md:w-36 rounded-xl border-2 border-primary-blue bg-white text-primary-blue font-semibold text-sm">
+            <button
+              onClick={handleCancel}
+              className="btn-hover2 w-16 h-8 md:w-36 rounded-xl border-2 border-primary-blue bg-white text-primary-blue font-semibold text-sm"
+            >
               Discard
             </button>
-            <button className="w-16 h-8 md:w-36 rounded-xl bg-primary-blue text-white border-2 border-primary-blue font-semibold text-sm hover:text-primary-blue hover:bg-white">
+            <button
+              onClick={handleSave}
+              className="w-16 h-8 md:w-36 rounded-xl bg-primary-blue text-white border-2 border-primary-blue font-semibold text-sm hover:text-primary-blue hover:bg-white"
+            >
               Create
             </button>
           </div>
