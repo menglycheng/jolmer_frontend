@@ -93,13 +93,13 @@ const EditProfile = ({ toggleModal }) => {
             </div>
           </div>
           <div className="px-5 mt-10 space-y-3">
-            <div className="bg-primary-lowWhite rounded-lg p-2 px-4">
+            <div className="bg-primary-input rounded-lg p-2 px-4">
               <label className="block text-sm font-medium" htmlFor="role">
                 Name
               </label>
               <div>
                 <input
-                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-lowWhite"
+                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
                   type="text"
                   id="name"
                   name="name"
@@ -109,13 +109,13 @@ const EditProfile = ({ toggleModal }) => {
               </div>
             </div>
 
-            <div className="bg-primary-lowWhite rounded-lg p-2 px-4">
+            <div className="bg-primary-input rounded-lg p-2 px-4">
               <label className="block text-sm font-medium" htmlFor="bio">
                 Description
               </label>
               <div>
                 <textarea
-                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-lowWhite"
+                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
                   id="bio"
                   name="bio"
                   value={formProfile.bio}
@@ -124,13 +124,13 @@ const EditProfile = ({ toggleModal }) => {
               </div>
             </div>
 
-            <div className="bg-primary-lowWhite rounded-lg p-2 px-4">
+            <div className="bg-primary-input rounded-lg p-2 px-4">
               <label className="block text-sm font-medium" htmlFor="role">
                 Position
               </label>
               <div>
                 <input
-                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-lowWhite"
+                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
                   type="text"
                   id="role"
                   name="role"
@@ -139,13 +139,13 @@ const EditProfile = ({ toggleModal }) => {
                 />
               </div>
             </div>
-            <div className="bg-primary-lowWhite rounded-lg p-2 px-4">
+            <div className="bg-primary-input rounded-lg p-2 px-4">
               <label className="block text-sm font-medium" htmlFor="gender">
                 Gender
               </label>
               <div>
                 <select
-                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-lowWhite"
+                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
                   id="gender"
                   name="gender"
                   value={formProfile.gender}
