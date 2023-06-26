@@ -24,7 +24,10 @@ const Login = () => {
 
   //Google handler Function
   async function handleGoogleSignIn() {
-    signIn("google", { callbackUrl: "http://localhost:3000" });
+    signIn("google", {
+      callbackUrl:
+        "https://jolmer-frontend-git-feat-userregister-mengly19.vercel.app",
+    });
   }
 
   async function handleFacebookSignIn() {
