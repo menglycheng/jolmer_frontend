@@ -26,6 +26,10 @@ body, html {
   .btn-hover {
     @apply  hover:text-primary-blue hover:border-primary-blue;
   }
+  .btn-hover2 {
+    @apply  hover:text-white hover:bg-primary-blue;
+  }
+
   .button {
     @apply flex items-center space-x-2 py-0 px-2 md:px-6 rounded-full border-2 border-primary-lowBlack text-base md:text-lg text-primary-lowBlack font-semibold;
   }
