@@ -2,7 +2,7 @@ import React from "react";
 import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 const Navbar = () => {
-  const token = "";
+  const token = "fdfd";
   return (
     <div>
       <header className="top-0 px-5 py-5 flex items-center justify-between max-w-screen-xl mx-auto z-20">
@@ -11,20 +11,26 @@ const Navbar = () => {
           className="flex items-center space-x-2 text-primary-blue"
         >
           <FaceSmileIcon className="w-9 h-9" />
-          <p className="font-bold text-xl">Jolmer</p>
+          <p className="font-bold text-lg md:text-xl">Jolmer</p>
         </Link>
         {token ? (
-          <button className="flex items-center space-x-1 bg-red-100md:space-x-2 py-0 md:py-2 px-2 md:px-6 border-primary-blue border-2 rounded-2xl text-xl text-primary-blue font-semibold">
+          <Link
+            href="/profile"
+            className="flex items-center justify-center space-x-1 w-28 h-10 md:w-36  border-primary-blue border-2 rounded-2xl text-base md:text-xl text-primary-blue font-semibold"
+          >
             {/* <img src="public/vercel.svg" alt="" /> */}
-            <FaceSmileIcon className="w-9 h-9" />
+            <FaceSmileIcon className="w-7 h-7 md:w-9 md:h-9" />
             <p>Mengly</p>
-          </button>
+          </Link>
         ) : (
           <div className="space-x-3 md:space-x-8">
-            <Link href="/about" className="font-semibold text-lg hover:underline hover:text-primary-blue">
+            <Link
+              href="/about"
+              className="font-semibold text-base md:text-lg hover:underline hover:text-primary-blue"
+            >
               About us
             </Link>
-            <button className="py-1 px-6 bg-primary-blue rounded-full text-base text-white font-bold">
+            <button class=" bg-primary-blue rounded-full text-sm md:text-base text-white font-bold w-20 h-8 lg:w-28 lg:h-10">
               Join us
             </button>
           </div>
