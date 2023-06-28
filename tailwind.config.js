@@ -15,12 +15,24 @@ module.exports = {
           lowBlack: "#2E4057",
           lowOrange: "#FDECEC",
           lowBrown: "#A3ABB6",
+<<<<<<< HEAD
+          lowGray: "#F9FBFC",
           lowWhite: "#f2eded",
+=======
+>>>>>>> development
           box: "#EDECEC",
+          input: "#E9E8E8",
         },
       },
       fontFamily: {
         lekton: ["Lekton"],
+      },
+      screens: {
+        smx: { max: "930px" }, // Small screens (up to 767px)
+        mdx: { max: "1025px" }, // Medium screens (up to 1023px)
+        lgx: { max: "1290px" }, // Large screens (up to 1279px)
+        smmxs: { max: "500px" }, //Screens for up to 400px
+        smxx: { max: "300px" }, // Screen for Galaxy Fold
       },
     },
   },

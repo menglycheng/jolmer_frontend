@@ -5,8 +5,8 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
 const EditProfile = ({ toggleModal }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
   const initialProfile = {
+    img: "/profile.jpg",
     name: "John Doe",
     bio: "Lorem ipsum dolor sit amet.",
     role: "Developer",
@@ -46,8 +46,14 @@ const EditProfile = ({ toggleModal }) => {
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    setSelectedImage(URL.createObjectURL(file));
+    const imageURL = URL.createObjectURL(file);
+    setFormProfile((prevFormProfile) => ({
+      ...prevFormProfile,
+      img: imageURL,
+    }));
   };
+  // console.log("Uploaded:", selectedImage);
+
   return (
     <div>
       <Modal
@@ -73,7 +79,7 @@ const EditProfile = ({ toggleModal }) => {
                 <Image
                   width={300}
                   height={300}
-                  src={selectedImage || "/profile.jpg"}
+                  src={formProfile.img}
                   alt="Profile"
                   className="object-cover"
                 />
@@ -93,13 +99,13 @@ const EditProfile = ({ toggleModal }) => {
             </div>
           </div>
           <div className="px-5 mt-10 space-y-3">
-            <div className="bg-primary-lowWhite rounded-lg p-2 px-4">
+            <div className="bg-primary-input rounded-lg p-2 px-4">
               <label className="block text-sm font-medium" htmlFor="role">
                 Name
               </label>
               <div>
                 <input
-                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-lowWhite"
+                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
                   type="text"
                   id="name"
                   name="name"
@@ -109,13 +115,13 @@ const EditProfile = ({ toggleModal }) => {
               </div>
             </div>
 
-            <div className="bg-primary-lowWhite rounded-lg p-2 px-4">
+            <div className="bg-primary-input rounded-lg p-2 px-4">
               <label className="block text-sm font-medium" htmlFor="bio">
                 Description
               </label>
               <div>
                 <textarea
-                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-lowWhite"
+                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
                   id="bio"
                   name="bio"
                   value={formProfile.bio}
@@ -124,13 +130,13 @@ const EditProfile = ({ toggleModal }) => {
               </div>
             </div>
 
-            <div className="bg-primary-lowWhite rounded-lg p-2 px-4">
+            <div className="bg-primary-input rounded-lg p-2 px-4">
               <label className="block text-sm font-medium" htmlFor="role">
                 Position
               </label>
               <div>
                 <input
-                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-lowWhite"
+                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
                   type="text"
                   id="role"
                   name="role"
@@ -139,13 +145,13 @@ const EditProfile = ({ toggleModal }) => {
                 />
               </div>
             </div>
-            <div className="bg-primary-lowWhite rounded-lg p-2 px-4">
+            <div className="bg-primary-input rounded-lg p-2 px-4">
               <label className="block text-sm font-medium" htmlFor="gender">
                 Gender
               </label>
               <div>
                 <select
-                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-lowWhite"
+                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
                   id="gender"
                   name="gender"
                   value={formProfile.gender}
