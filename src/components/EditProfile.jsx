@@ -5,8 +5,8 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
 const EditProfile = ({ toggleModal }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
   const initialProfile = {
+    img: "/profile.jpg",
     name: "John Doe",
     bio: "Lorem ipsum dolor sit amet.",
     role: "Developer",
@@ -46,8 +46,14 @@ const EditProfile = ({ toggleModal }) => {
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    setSelectedImage(URL.createObjectURL(file));
+    const imageURL = URL.createObjectURL(file);
+    setFormProfile((prevFormProfile) => ({
+      ...prevFormProfile,
+      img: imageURL,
+    }));
   };
+  // console.log("Uploaded:", selectedImage);
+
   return (
     <div>
       <Modal
@@ -73,7 +79,7 @@ const EditProfile = ({ toggleModal }) => {
                 <Image
                   width={300}
                   height={300}
-                  src={selectedImage || "/profile.jpg"}
+                  src={formProfile.img}
                   alt="Profile"
                   className="object-cover"
                 />
