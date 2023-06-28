@@ -3,7 +3,7 @@
 
 ### NextJS ###
 # dependencies
-/node_modules
+./node_modules
 /.pnp
 .pnp.js
 
@@ -54,3 +54,6 @@ thumb
 sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/react,nextjs
+node_modules
+node_modules
+node_modules
