@@ -7,12 +7,14 @@ import {
 import React, { useState } from "react";
 import { Data } from "../../../utils/Data";
 import Card from "./Card";
+// import { getEvent } from "@/pages/api/Event";
 
 const HomePage = () => {
   const [showAll, setShowAll] = useState(true);
   const [showCompetition, setShowCompetition] = useState(false);
   const [showVolunteer, setShowVolunteer] = useState(false);
-
+  // const EventData = getEvent();
+  // console.log(EventData);
   const handleShowAll = () => {
     setShowAll(true);
     setShowCompetition(false);

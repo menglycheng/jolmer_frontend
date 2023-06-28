@@ -15,9 +15,13 @@ module.exports = {
           lowBlack: "#2E4057",
           lowOrange: "#FDECEC",
           lowBrown: "#A3ABB6",
+<<<<<<< HEAD
           lowGray: "#F9FBFC",
           lowWhite: "#f2eded",
+=======
+>>>>>>> development
           box: "#EDECEC",
+          input: "#E9E8E8",
         },
       },
       fontFamily: {
