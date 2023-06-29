@@ -4,17 +4,29 @@ import {
   MegaphoneIcon,
   WalletIcon,
 } from "@heroicons/react/24/outline";
-import React, { useState } from "react";
-import { Data } from "../../../utils/Data";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
-// import { getEvent } from "@/pages/api/Event";
+import { getEvent } from "@/pages/api/Event";
 
 const HomePage = () => {
   const [showAll, setShowAll] = useState(true);
   const [showCompetition, setShowCompetition] = useState(false);
   const [showVolunteer, setShowVolunteer] = useState(false);
-  // const EventData = getEvent();
-  // console.log(EventData);
+  const [EventData, setEventData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    try {
+      const data = await getEvent();
+      setEventData(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const handleShowAll = () => {
     setShowAll(true);
     setShowCompetition(false);
@@ -33,13 +45,13 @@ const HomePage = () => {
     setShowVolunteer(true);
   };
 
-  const filteredData = Data.filter((item) => {
+  const filteredData = EventData.filter((item) => {
     if (showAll) {
       return true;
     } else if (showCompetition) {
-      return item.status === "Competition";
+      return item.category === "COMPETITION";
     } else if (showVolunteer) {
-      return item.status === "Volunteer";
+      return item.category === "VOLUNTEER";
     }
     return false;
   });
