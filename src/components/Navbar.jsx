@@ -1,8 +1,12 @@
 import React from "react";
 import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+
 const Navbar = () => {
   const token = "fdfd";
+  const { data: session } = useSession();
+
   return (
     <div>
       <header className="top-0 px-5 py-5 flex items-center justify-between max-w-screen-xl mx-auto z-20">
@@ -13,14 +17,14 @@ const Navbar = () => {
           <FaceSmileIcon className="w-9 h-9" />
           <p className="font-bold text-lg md:text-xl">Jolmer</p>
         </Link>
-        {token ? (
+        {session ? (
           <Link
             href="/profile"
             className="flex items-center justify-center space-x-1 w-28 h-10 md:w-36  border-primary-blue border-2 rounded-2xl text-base md:text-xl text-primary-blue font-semibold"
           >
             {/* <img src="public/vercel.svg" alt="" /> */}
             <FaceSmileIcon className="w-7 h-7 md:w-9 md:h-9" />
-            <p>Mengly</p>
+            <p>{session.user.name}</p>
           </Link>
         ) : (
           <div className="space-x-3 md:space-x-8">
@@ -30,9 +34,11 @@ const Navbar = () => {
             >
               About us
             </Link>
-            <button class=" bg-primary-blue rounded-full text-sm md:text-base text-white font-bold w-20 h-8 lg:w-28 lg:h-10">
-              Join us
-            </button>
+            <Link href="/login">
+              <button className="bg-primary-blue rounded-full text-sm md:text-base text-white font-bold w-20 h-8 lg:w-28 lg:h-10">
+                Join us
+              </button>
+            </Link>
           </div>
         )}
       </header>

@@ -10,7 +10,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { CalendarIcon } from "@heroicons/react/24/solid";
 
-const detail = ({ item }) => {
+// const detail = ({ item }) => {
+const detail = () => {
   return (
     <div>
       <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
@@ -37,19 +38,19 @@ const detail = ({ item }) => {
                 <h2 className="font-bold text-2xl lg:text-3xl">Smart Spark</h2>
                 <div className="flex items-center space-x-2">
                   <BuildingOfficeIcon className="icon" />
-                  <p className="text-sm md:text-base">{item.Orgainize}</p>
+                  <p className="text-sm md:text-base">ff</p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <MapPinIcon className="icon" />
-                  <p className="text-sm md:text-base">{item.location}</p>
+                  <p className="text-sm md:text-base">ff</p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <EyeIcon className="icon" />
-                  <p className="text-sm md:text-base">{item.view}</p>
+                  <p className="text-sm md:text-base">ff</p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <UserGroupIcon className="icon" />
-                  <p className="text-sm md:text-base">{item.status}</p>
+                  <p className="text-sm md:text-base">fff</p>
                 </div>
               </div>
             </div>
@@ -66,7 +67,7 @@ const detail = ({ item }) => {
                   </div>
                   <div>
                     <p className="text-sm">Regisration Deadline</p>
-                    <p className="font-bold">{item.Date}</p>
+                    <p className="font-bold">ff</p>
                   </div>
                 </div>
                 <button className="w-28 h-10 md:w-full rounded-xl border-2 bg-primary-blue text-white font-semibold text-sm md:text-base hover:border-2 hover:border-primary-blue hover:text-primary-blue hover:bg-white">
@@ -100,28 +101,28 @@ const detail = ({ item }) => {
   );
 };
 
-export async function getServerSideProps({ query }) {
-  const { id } = query;
+// export async function getServerSideProps({ query }) {
+//   const { id } = query;
 
-  // Find the item with the matching id in the Data array
-  const item = Data.find((item) => item.id === id);
+//   // Find the item with the matching id in the Data array
+//   const item = Data.find((item) => item.id === id);
 
-  if (!item) {
-    // If the item is not found, you can handle it as per your requirements
-    // For example, you can redirect the user to an error page or display a message
-    return {
-      redirect: {
-        destination: "/error", // Replace with your error page route
-        permanent: false,
-      },
-    };
-  }
+//   if (!item) {
+//     // If the item is not found, you can handle it as per your requirements
+//     // For example, you can redirect the user to an error page or display a message
+//     return {
+//       redirect: {
+//         destination: "/error", // Replace with your error page route
+//         permanent: false,
+//       },
+//     };
+//   }
 
-  return {
-    props: {
-      item,
-    },
-  };
-}
+//   return {
+//     props: {
+//       item,
+//     },
+//   };
+// }
 
 export default detail;
