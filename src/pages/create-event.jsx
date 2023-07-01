@@ -219,23 +219,31 @@ const createEvent = () => {
                   </div>
                 </div>
               </div>
-              <div class="rounded-sm bg-transparent py-5 md:pl-10 lg:pl-20">
+              <div className="rounded-sm bg-transparent py-5 md:pl-10 lg:pl-20">
                 <div className="bg-primary-input rounded-lg p-5 w-full">
                   <label
-                    for="dropzone-file"
-                    class="flex flex-col items-center justify-center md:h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-primary-input hover:bg-primary-box"
+                    htmlFor="dropzone-file"
+                    className="relative flex flex-col items-center justify-center md:h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-primary-input hover:bg-primary-box"
                   >
-                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                      <PlusIcon className="text-primary-lowBlack w-[20%] md:w-[30%] opacity-50" />
-                    </div>
-                    <input
-                      id="dropzone-file"
-                      type="file"
-                      className="hidden"
-                      name="file"
-                      onChange={handleImageUpload}
-                    />
+                    {formEvent.img ? (
+                      <img
+                        src={formEvent.img}
+                        alt="Preview"
+                        className="absolute inset-0 object-cover w-full h-full"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                        <PlusIcon className="text-primary-lowBlack w-[20%] md:w-[30%] opacity-50" />
+                      </div>
+                    )}
                   </label>
+                  <input
+                    id="dropzone-file"
+                    type="file"
+                    className="hidden"
+                    name="file"
+                    onChange={handleImageUpload}
+                  />
                 </div>
               </div>
             </div>
