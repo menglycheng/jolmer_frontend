@@ -83,8 +83,8 @@ const createEvent = () => {
 
     const eventData = {
       ...formEvent,
-      title: formEvent.event_name, // Change event_name to title
-      category: formEvent.categorize, // Change categorize to category
+      title: formEvent.event_name,
+      category: formEvent.categorize,
       poster: formEvent.img,
       registerUrl: formEvent.registerUrl,
       deadline: formEvent.deadline,

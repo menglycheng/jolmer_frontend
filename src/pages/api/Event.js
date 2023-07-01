@@ -12,9 +12,22 @@ export async function getEvent() {
   }
 }
 
+export async function getEventById(id) {
+  try {
+    const response = await axios.get(
+      `https://api.jolmer.me/api/v1/events/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
+
 export async function postEvent(eventData) {
   try {
-    const token = "";
+    const token =
+      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5ZWFuLnNvdmFudmF0aGFuYTE5QGtpdC5lZHUua2giLCJpYXQiOjE2ODgxODUzODQsImV4cCI6MTY4ODE4NTY4NH0.ERMDrjvVqck062uerzvzMdkIGUAIEeqT2LifCxi_r9E";
     const headers = {
       Authorization: `Bearer ${token}`,
     };

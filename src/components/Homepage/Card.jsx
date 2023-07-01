@@ -17,7 +17,7 @@ const Card = ({ data }) => {
               width={300}
               height={300}
               class="rounded-t-lg w-full bg-black h-52 object-cover"
-              src={"/" + item.poster}
+              src={item.poster}
               alt="Poster"
             />
             <p class="text-[10px] bg-primary-yellow absolute top-2 left-2 rounded-full px-1 py-0.5 font-semibold">

@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { Data } from "../../../utils/Data";
 import {
   BuildingOfficeIcon,
   EyeIcon,
@@ -9,16 +8,16 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
 import { CalendarIcon } from "@heroicons/react/24/solid";
+import { getEventById } from "../api/Event";
 
-// const detail = ({ item }) => {
-const detail = () => {
+const detail = ({ event }) => {
   return (
     <div>
       <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
         <div className="bg-primary-lowBlack relative pb-[30%] md:pb-[20%]">
           <img
-            alt="profile"
-            src="/SmartSpark8-Webinar.jpg"
+            alt="poster"
+            src={event.poster}
             className="object-cover absolute top-0 left-0 w-full h-full"
           />
         </div>
@@ -35,22 +34,26 @@ const detail = () => {
                 className="rounded-lg w-28 h-28 md:w-36 md:h-36 object-cover"
               />
               <div className="space-y-2 flex flex-col items-center md:items-start text-primary-lowBlack">
-                <h2 className="font-bold text-2xl lg:text-3xl">Smart Spark</h2>
+                <h2 className="font-bold text-2xl lg:text-3xl">
+                  {event.title}
+                </h2>
                 <div className="flex items-center space-x-2">
                   <BuildingOfficeIcon className="icon" />
-                  <p className="text-sm md:text-base">ff</p>
+                  <p className="text-sm md:text-base">
+                    {event.user?.organizer?.name}
+                  </p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <MapPinIcon className="icon" />
-                  <p className="text-sm md:text-base">ff</p>
+                  <p className="text-sm md:text-base">{event.location}</p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <EyeIcon className="icon" />
-                  <p className="text-sm md:text-base">ff</p>
+                  <p className="text-sm md:text-base">{event.views}</p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <UserGroupIcon className="icon" />
-                  <p className="text-sm md:text-base">fff</p>
+                  <p className="text-sm md:text-base">{event.category}</p>
                 </div>
               </div>
             </div>
@@ -67,7 +70,7 @@ const detail = () => {
                   </div>
                   <div>
                     <p className="text-sm">Regisration Deadline</p>
-                    <p className="font-bold">ff</p>
+                    <p className="font-bold">{event.deadline}</p>
                   </div>
                 </div>
                 <button className="w-28 h-10 md:w-full rounded-xl border-2 bg-primary-blue text-white font-semibold text-sm md:text-base hover:border-2 hover:border-primary-blue hover:text-primary-blue hover:bg-white">
@@ -87,13 +90,8 @@ const detail = () => {
         </div>
         <div className="px-5">
           <div className="relative bg-primary-box bg-opacity-50 rounded-lg mt-5 py-5 px-5 md:px-10">
-            <h2 className="font-semibold text-xl md:text-2xl">Smart Spark</h2>
-            <p className="text-sm md:text-base">
-              Lorem ipsum dolor sit amet consectetur. Sem viverra nisl etiam
-              condimentum at.Lorem ipsum dolor sit amel etiam condimentum at.
-              Lorem ipsum dolor sit amet consectetur. Sem viverra nisl etiam
-              condimentum at.
-            </p>
+            <h2 className="font-semibold text-xl md:text-2xl">{event.title}</h2>
+            <p className="text-sm md:text-base">{event.description}</p>
           </div>
         </div>
       </div>
@@ -101,28 +99,15 @@ const detail = () => {
   );
 };
 
-// export async function getServerSideProps({ query }) {
-//   const { id } = query;
+export async function getServerSideProps({ query }) {
+  const { id } = query;
+  const event = await getEventById(id);
 
-//   // Find the item with the matching id in the Data array
-//   const item = Data.find((item) => item.id === id);
-
-//   if (!item) {
-//     // If the item is not found, you can handle it as per your requirements
-//     // For example, you can redirect the user to an error page or display a message
-//     return {
-//       redirect: {
-//         destination: "/error", // Replace with your error page route
-//         permanent: false,
-//       },
-//     };
-//   }
-
-//   return {
-//     props: {
-//       item,
-//     },
-//   };
-// }
+  return {
+    props: {
+      event,
+    },
+  };
+}
 
 export default detail;
