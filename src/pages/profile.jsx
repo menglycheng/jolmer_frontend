@@ -14,7 +14,7 @@ const profile = () => {
   const [editProfileOpen, setEditProfileOpen] = useState(false);
   const [editOrganizerOpen, setEditOrganizerOpen] = useState(false);
 
-  const togglePofileModal = () => {
+  const toggleProfileModal = () => {
     setEditProfileOpen(!editProfileOpen);
   };
 
@@ -54,13 +54,13 @@ const profile = () => {
           </div>
           <div className="flex items-end justify-end mt-5">
             <button
-              onClick={togglePofileModal}
+              onClick={toggleProfileModal}
               className="btn-hover2 w-24 h-8 md:w-28 md:h-10 rounded-2xl border-2 border-primary-blue bg-white text-primary-blue font-semibold text-sm md:text-base"
             >
               Edit Profile
             </button>
             {editProfileOpen && (
-              <EditProfile togglePofileModal={togglePofileModal} />
+              <EditProfile toggleProfileModal={toggleProfileModal} />
             )}
           </div>
         </div>
