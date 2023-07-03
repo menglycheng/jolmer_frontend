@@ -15,7 +15,11 @@ const createEvent = () => {
   };
   const [formEvent, setFormEvent] = useState(EventForm);
   const [formErrors, setFormErrors] = useState({});
+  const [clearData, setClearData] = useState(false);
 
+  const handleClearData = () => {
+    setClearData(true);
+  };
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormEvent((prevFormEvent) => ({
@@ -83,8 +87,8 @@ const createEvent = () => {
 
     const eventData = {
       ...formEvent,
-      title: formEvent.event_name, // Change event_name to title
-      category: formEvent.categorize, // Change categorize to category
+      title: formEvent.event_name,
+      category: formEvent.categorize,
       poster: formEvent.img,
       registerUrl: formEvent.registerUrl,
       deadline: formEvent.deadline,
@@ -101,6 +105,7 @@ const createEvent = () => {
       console.log("Event created:", response);
       // Reset the form after successful creation
       setFormEvent(EventForm);
+      handleClearData();
     } catch (error) {
       console.error("Error creating event:", error);
     }
@@ -259,6 +264,7 @@ const createEvent = () => {
                 <EditDescription
                   value={formEvent.description}
                   onChange={handleDescriptionChange}
+                  clearData={clearData}
                 />
               </div>
             </div>
