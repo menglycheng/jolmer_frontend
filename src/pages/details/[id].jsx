@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { CalendarIcon } from "@heroicons/react/24/solid";
 import { getEventById } from "../api/Event";
+import Link from "next/link";
 
 const detail = ({ event }) => {
   return (
@@ -73,9 +74,12 @@ const detail = ({ event }) => {
                     <p className="font-bold">{event.deadline}</p>
                   </div>
                 </div>
-                <button className="w-28 h-10 md:w-full rounded-xl border-2 bg-primary-blue text-white font-semibold text-sm md:text-base hover:border-2 hover:border-primary-blue hover:text-primary-blue hover:bg-white">
+                <Link
+                  href={event.registerUrl}
+                  className="w-28 h-10 md:w-full rounded-xl border-2 bg-primary-blue text-white font-semibold text-sm md:text-base hover:border-2 hover:border-primary-blue hover:text-primary-blue hover:bg-white flex items-center justify-center"
+                >
                   Register
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -91,7 +95,10 @@ const detail = ({ event }) => {
         <div className="px-5">
           <div className="relative bg-primary-box bg-opacity-50 rounded-lg mt-5 py-5 px-5 md:px-10">
             <h2 className="font-semibold text-xl md:text-2xl">{event.title}</h2>
-            <p className="text-sm md:text-base">{event.description}</p>
+            <div className="text-sm md:text-base">
+              <div dangerouslySetInnerHTML={{ __html: event.description }} />
+              {/* {event.description} */}
+            </div>
           </div>
         </div>
       </div>

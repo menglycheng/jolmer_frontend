@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
@@ -9,7 +9,7 @@ const Editor = dynamic(
 );
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-const EditDescription = ({ initialValue, onChange }) => {
+const EditDescription = ({ initialValue, onChange, clearData }) => {
   const [editorState, setEditorState] = useState(() => {
     if (initialValue) {
       const contentState = convertFromRaw(JSON.parse(initialValue));
@@ -17,6 +17,17 @@ const EditDescription = ({ initialValue, onChange }) => {
     }
     return EditorState.createEmpty();
   });
+
+  const clearEditorState = () => {
+    setEditorState(EditorState.createEmpty());
+  };
+
+  // Clear the editor state when clearData prop changes
+  React.useEffect(() => {
+    if (clearData) {
+      clearEditorState();
+    }
+  }, [clearData]);
 
   const handleDescriptionChange = (newEditorState) => {
     setEditorState(newEditorState);
