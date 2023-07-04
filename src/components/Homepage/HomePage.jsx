@@ -7,12 +7,15 @@ import {
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import { getEvent } from "@/pages/api/Event";
+import Paginator from "./Paginator";
 
 const HomePage = () => {
   const [showAll, setShowAll] = useState(true);
   const [showCompetition, setShowCompetition] = useState(false);
   const [showVolunteer, setShowVolunteer] = useState(false);
   const [EventData, setEventData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const eventsPerPage = 5;
 
   useEffect(() => {
     fetchData();
@@ -45,16 +48,31 @@ const HomePage = () => {
     setShowVolunteer(true);
   };
 
+  const currentDate = new Date();
+
   const filteredData = EventData.filter((item) => {
     if (showAll) {
-      return true;
+      return new Date(item.deadline) > currentDate;
     } else if (showCompetition) {
-      return item.category === "COMPETITION";
+      return (
+        item.category === "COMPETITION" && new Date(item.deadline) > currentDate
+      );
     } else if (showVolunteer) {
-      return item.category === "VOLUNTEER";
+      return (
+        item.category === "VOLUNTEER" && new Date(item.deadline) > currentDate
+      );
     }
     return false;
   });
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = filteredData.slice(indexOfFirstEvent, indexOfLastEvent);
+  const totalEvents = filteredData.length;
 
   return (
     <div className="px-5 max-w-screen-xl mx-auto">
@@ -102,7 +120,15 @@ const HomePage = () => {
           <MagnifyingGlassIcon className="icon" />
         </button>
       </div>
-      <Card data={filteredData} />
+      <Card data={currentEvents} />
+      <div className="mt-20 mx-auto flex justify-center">
+        <Paginator
+          totalEvents={totalEvents}
+          eventsPerPage={eventsPerPage}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };
