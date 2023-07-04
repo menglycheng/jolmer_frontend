@@ -8,7 +8,6 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import { getEvent } from "@/pages/api/Event";
 import Paginator from "./Paginator";
-import SearchButton from "./SearchButton";
 
 const HomePage = () => {
   const [showAll, setShowAll] = useState(true);
