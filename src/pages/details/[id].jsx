@@ -110,19 +110,23 @@ const detail = ({ event }) => {
 };
 
 export async function getServerSideProps({ query }) {
-  const { id } = query;
-  const event = await getEventById(id);
-  // return {
-  //   redirect: {
-  //     destination: "/error", // Replace with your error page route
-  //     permanent: false,
-  //   },
-  // };
-  return {
-    props: {
-      event,
-    },
-  };
+  try {
+    const { id } = query;
+    const event = await getEventById(id);
+
+    return {
+      props: {
+        event,
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/error", // Replace with your error page route
+        permanent: false,
+      },
+    };
+  }
 }
 
 export default detail;

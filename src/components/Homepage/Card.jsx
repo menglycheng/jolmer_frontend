@@ -26,7 +26,7 @@ const Card = ({ data }) => {
           </div>
 
           <div class="px-5 py-3">
-            <h5 class="mb-2 text-2xl text-center font-bold whitespace-nowrap overflow-hidden truncate max-w-[280px]">
+            <h5 class="mb-2 text-2xl text-center font-bold truncate max-w-xs">
               {item.title}
             </h5>
             <p class="mb-3 font-normal text-center text-gray-700">
