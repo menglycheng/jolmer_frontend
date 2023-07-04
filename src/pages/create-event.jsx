@@ -50,11 +50,19 @@ const createEvent = () => {
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    const imageURL = URL.createObjectURL(file);
-    setFormEvent((prevFormEvent) => ({
-      ...prevFormEvent,
-      img: imageURL,
-    }));
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      // console.log(reader.result);
+      setFormEvent((prevFormEvent) => ({
+        ...prevFormEvent,
+        img: reader.result,
+      }));
+    };
+    reader.onerror = (error) => {
+      console.log("error", error);
+    };
   };
 
   const handleSave = async () => {
