@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import {
-  BuildingOfficeIcon,
   EyeIcon,
   HeartIcon,
   MapPinIcon,
   UserGroupIcon,
+  BuildingOffice2Icon,
 } from "@heroicons/react/24/outline";
-import { CalendarIcon } from "@heroicons/react/24/solid";
+import { BuildingOfficeIcon, CalendarIcon } from "@heroicons/react/24/solid";
 import { getEventById } from "../api/Event";
 import Link from "next/link";
 
@@ -26,20 +26,23 @@ const detail = ({ event }) => {
         <div className="px-5">
           <div className="relative bg-primary-box bg-opacity-50 rounded-lg mt-5 flex flex-col md:flex-row py-5 justify-center md:justify-between px-5 md:px-12">
             <div className="flex flex-col md:flex-row items-center space-x-5 space-y-1 md:space-y-0 md:p-10">
-              <Image
+              {/* <Image
                 width={300}
                 height={300}
                 priority={false}
                 alt="profile"
                 src="/download 1.png"
                 className="rounded-lg w-28 h-28 md:w-36 md:h-36 object-cover"
-              />
+              /> */}
+              <div className="rounded-lg w-28 h-28 md:w-40 md:h-40 border-2 shadow-sm drop-shadow-sm">
+                <BuildingOfficeIcon className="text-primary-lowBrown opacity-80" />
+              </div>
               <div className="space-y-2 flex flex-col items-center md:items-start text-primary-lowBlack">
                 <h2 className="font-bold text-2xl lg:text-3xl">
                   {event.title}
                 </h2>
                 <div className="flex items-center space-x-2">
-                  <BuildingOfficeIcon className="icon" />
+                  <BuildingOffice2Icon className="icon" />
                   <p className="text-sm md:text-base">
                     {event.user?.organizer?.name}
                   </p>
@@ -109,7 +112,12 @@ const detail = ({ event }) => {
 export async function getServerSideProps({ query }) {
   const { id } = query;
   const event = await getEventById(id);
-
+  // return {
+  //   redirect: {
+  //     destination: "/error", // Replace with your error page route
+  //     permanent: false,
+  //   },
+  // };
   return {
     props: {
       event,

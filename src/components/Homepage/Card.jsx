@@ -25,8 +25,10 @@ const Card = ({ data }) => {
             </p>
           </div>
 
-          <div class="p-5">
-            <h5 class="mb-2 text-2xl text-center font-bold">{item.title}</h5>
+          <div class="px-5 py-3">
+            <h5 class="mb-2 text-2xl text-center font-bold whitespace-nowrap overflow-hidden truncate max-w-[280px]">
+              {item.title}
+            </h5>
             <p class="mb-3 font-normal text-center text-gray-700">
               {item.deadline}
             </p>
