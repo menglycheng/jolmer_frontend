@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import { getEvent } from "@/pages/api/Event";
 import Paginator from "./Paginator";
+import SearchButton from "./SearchButton";
 
 const HomePage = () => {
   const [showAll, setShowAll] = useState(true);
@@ -75,7 +76,7 @@ const HomePage = () => {
   const totalEvents = filteredData.length;
 
   return (
-    <div className="px-5 max-w-screen-xl mx-auto">
+    <div className="px-5 max-w-screen-xl mx-auto flex flex-col min-h-screen">
       <div className="flex justify-center md:justify-between items-center">
         <h3 className="hidden lg:inline text-2xl text-primary-lowBlack font-bold">
           Explore
@@ -120,8 +121,10 @@ const HomePage = () => {
           <MagnifyingGlassIcon className="icon" />
         </button>
       </div>
-      <Card data={currentEvents} />
-      <div className="mt-20 mx-auto flex justify-center">
+      <div className="flex-grow">
+        <Card data={currentEvents} />
+      </div>
+      <div className="mt-10 mx-auto flex justify-center">
         <Paginator
           totalEvents={totalEvents}
           eventsPerPage={eventsPerPage}
