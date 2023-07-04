@@ -138,7 +138,7 @@ const HomePage = () => {
           </div>
         ) : error ? (
           <div class="h-screen">
-            <div class="flex justify-center items-center h-full font-2xl font-semibold">
+            <div class="flex justify-center items-center h-full font-4xl font-semibold">
               No Event
             </div>
           </div>
