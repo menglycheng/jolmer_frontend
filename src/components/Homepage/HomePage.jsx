@@ -14,8 +14,10 @@ const HomePage = () => {
   const [showCompetition, setShowCompetition] = useState(false);
   const [showVolunteer, setShowVolunteer] = useState(false);
   const [EventData, setEventData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const eventsPerPage = 5;
+  const eventsPerPage = 8;
 
   useEffect(() => {
     fetchData();
@@ -25,8 +27,11 @@ const HomePage = () => {
     try {
       const data = await getEvent();
       setEventData(data);
+      setLoading(false);
     } catch (error) {
       console.error(error);
+      setError(true);
+      setLoading(false);
     }
   }
 
@@ -121,7 +126,25 @@ const HomePage = () => {
         </button>
       </div>
       <div className="flex-grow">
-        <Card data={currentEvents} />
+        {loading ? (
+          <div class="h-screen">
+            <div class="flex justify-center items-center h-full">
+              <img
+                class="h-16 w-16"
+                src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
+                alt=""
+              />
+            </div>
+          </div>
+        ) : error ? (
+          <div class="h-screen">
+            <div class="flex justify-center items-center h-full font-4xl font-semibold">
+              No Event
+            </div>
+          </div>
+        ) : (
+          <Card data={currentEvents} />
+        )}
       </div>
       <div className="mt-10 mx-auto flex justify-center">
         <Paginator
