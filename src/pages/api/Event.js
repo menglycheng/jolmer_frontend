@@ -27,7 +27,7 @@ export async function getEventById(id) {
 export async function postEvent(eventData) {
   try {
     const token =
-      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5ZWFuLnNvdmFudmF0aGFuYTE5QGtpdC5lZHUua2giLCJpYXQiOjE2ODg0Nzk5NTcsImV4cCI6MTY4ODQ4MDI1N30.NsSLzdbeboJRor_gK-YGHg8q1YaDeb9Brk0G7tTua8E";
+      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5ZWFuLnNvdmFudmF0aGFuYTE5QGtpdC5lZHUua2giLCJpYXQiOjE2ODg1Mjk1MTUsImV4cCI6MTY4ODUyOTgxNX0.3vcBHCr3EimkYtNXY0kUDST6Tr1terq3BgwjPYgpldI";
     const headers = {
       Authorization: `Bearer ${token}`,
     };

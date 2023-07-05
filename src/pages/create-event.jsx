@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import EditDescription from "@/components/EditDescription";
 import { postEvent } from "./api/Event";
+import AlertMessage from "@/components/AlertMessage";
 
 const createEvent = () => {
   const EventForm = {
@@ -16,6 +17,7 @@ const createEvent = () => {
   const [formEvent, setFormEvent] = useState(EventForm);
   const [formErrors, setFormErrors] = useState({});
   const [clearData, setClearData] = useState(false);
+  const [messageAlert, setMessageAlert] = useState(false);
 
   const handleClearData = () => {
     setClearData(true);
@@ -114,6 +116,11 @@ const createEvent = () => {
       // Reset the form after successful creation
       setFormEvent(EventForm);
       handleClearData();
+      setMessageAlert(true);
+
+      setTimeout(() => {
+        setMessageAlert(false);
+      }, 7000);
     } catch (error) {
       console.error("Error creating event:", error);
     }
@@ -121,6 +128,10 @@ const createEvent = () => {
 
   const handleCancel = () => {
     setFormEvent(EventForm);
+  };
+
+  const handleDismiss = () => {
+    setMessageAlert(false);
   };
 
   return (
@@ -293,6 +304,7 @@ const createEvent = () => {
             </button>
           </div>
         </div>
+        {messageAlert && <AlertMessage onDismiss={handleDismiss} />}
       </div>
     </div>
   );
