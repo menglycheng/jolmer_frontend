@@ -51,8 +51,9 @@ const RegisterChoosePasswordPage = () => {
           router.push("/login");
         }
       } catch (error) {
-        console.log("Error", error);
-        setError(error.response.data.error);
+        //console.log("Error", error);
+        setError(error.response.data.email);
+        //console.log(error.response.data);
         throw error;
       }
     }
@@ -119,6 +120,11 @@ const RegisterChoosePasswordPage = () => {
           >
             Continue sign up
           </button>
+          {error && (
+            <div className="flex items-center justify-center text-xs md:text-sm text-red-700 font-bold mb-3 ">
+              <p>{error}</p>
+            </div>
+          )}
           <button
             type="submit"
             value="organizer"

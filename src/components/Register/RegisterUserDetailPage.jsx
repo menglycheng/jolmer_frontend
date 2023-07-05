@@ -6,16 +6,14 @@ import { useRecoilState } from "recoil";
 import { activeTabState } from "../../../recoil/register/atom";
 import { userRegisterState } from "../../../recoil/register/atom";
 
-
 const RegisterUserDetailPage = () => {
-
   const [activeTab, setActiveTab] = useRecoilState(activeTabState);
   const [userRegister, setUserRegister] = useRecoilState(userRegisterState);
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
-  
+
   const formik = useFormik({
     initialValues: {
       firstname: "",
@@ -33,8 +31,7 @@ const RegisterUserDetailPage = () => {
       firstName: values.firstname,
       lastName: values.lastname,
       email: values.email,
-    })
-    
+    });
 
     console.log(values);
   }

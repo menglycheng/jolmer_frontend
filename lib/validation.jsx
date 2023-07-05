@@ -11,8 +11,6 @@ export function login_validate(values) {
   // Password Validation
   if (!values.password) {
     errors.password = "Required";
-  } else if (values.password.length < 8) {
-    errors.password = "Must be greater than 8 character!";
   } else if (values.password.includes(" ")) {
     errors.password = "Invalid Password";
   }
@@ -51,6 +49,14 @@ export function choose_pass_validation(values) {
     errors.password = "Required";
   } else if (values.password.length < 8) {
     errors.password = "Must be greater than 8 character!";
+  } else if (!/[A-Z]/.test(values.password)) {
+    errors.password = "Must contain at least one uppercase letter!";
+  } else if (!/[a-z]/.test(values.password)) {
+    errors.password = "Must contain at least one lowercase letter!";
+  } else if (!/\d/.test(values.password)) {
+    errors.password = "Must contain at least one number!";
+  } else if (!/\d/.test(values.password)) {
+    errors.password = "Must contain at least one number!";
   } else if (values.password.includes(" ")) {
     errors.password = "Invalid Password";
   }

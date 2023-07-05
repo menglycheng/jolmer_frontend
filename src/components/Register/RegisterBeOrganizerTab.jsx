@@ -7,12 +7,10 @@ import { userRegisterState } from "../../../recoil/register/atom";
 import { registerApi } from "@/axios/auth/registerApi";
 import { useRouter } from "next/router";
 
-
 const RegisterBeOrganizerTab = () => {
   const [userRegister, setUserRegister] = useRecoilState(userRegisterState);
   const router = useRouter();
   const [error, setError] = React.useState(null);
-
 
   const formik = useFormik({
     initialValues: {
@@ -25,13 +23,13 @@ const RegisterBeOrganizerTab = () => {
   });
 
   async function onSubmit(values) {
-    const userRegisterData = {   
+    const userRegisterData = {
       ...userRegister,
-      organizer: {  
-        name : values.organization_name,
-        facebook_url : values.organization_facebook,
-        email : values.organization_email,
-      }
+      organizer: {
+        name: values.organization_name,
+        facebook_url: values.organization_facebook,
+        email: values.organization_email,
+      },
     };
     try {
       console.log(userRegisterData);
@@ -47,7 +45,6 @@ const RegisterBeOrganizerTab = () => {
       setError(error.response.data.error);
       throw error;
     }
-    
   }
 
   return (
