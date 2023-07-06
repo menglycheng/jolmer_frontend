@@ -224,7 +224,7 @@ const createEvent = () => {
                     )}
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="time">registerUrl</label>
+                    <label htmlFor="time">Register Url</label>
                     <div>
                       <input
                         className="w-full rounded-sm font-light text-sm md:text-base focus:bg-transparent  bg-primary-input shadow px-2 py-1"
