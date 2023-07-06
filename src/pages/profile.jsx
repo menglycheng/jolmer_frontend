@@ -9,11 +9,26 @@ import Card from "@/components/Homepage/Card";
 import { Data } from "../../utils/Data";
 import EditProfile from "@/components/EditProfile";
 
+
 const profile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
+
+import BecomeOrganizer from "@/components/BecomeOrganizer";
+
+const profile = () => {
+  const [editProfileOpen, setEditProfileOpen] = useState(false);
+  const [editOrganizerOpen, setEditOrganizerOpen] = useState(false);
+
+  const toggleProfileModal = () => {
+    setEditProfileOpen(!editProfileOpen);
+  };
+
+  const toggleOrganizerModal = () => {
+    setEditOrganizerOpen(!editOrganizerOpen);
+
   };
 
   return (
@@ -49,6 +64,7 @@ const profile = () => {
           <div className="flex items-end justify-end mt-5">
             <button
               onClick={toggleModal}
+
               className="btn-hover2 w-24 h-8 md:w-28 md:h-10 rounded-2xl border-2 border-primary-blue bg-white text-primary-blue font-semibold text-sm md:text-base"
             >
               Edit Profile
@@ -64,10 +80,16 @@ const profile = () => {
               </h1>
               <div className="h-[4px] rounded-full bg-primary-blue w-10 mt-2" />
             </button>
-            <button className="btn-hover2 flex items-center space-x-1 md:space-x-2 justify-center w-48 h-8 md:w-60 md:h-10 rounded-2xl text-sm md:text-base font-semibold border-primary-blue border-2 text-primary-blue">
+            <button
+              onClick={toggleOrganizerModal}
+              className="btn-hover2 flex items-center space-x-1 md:space-x-2 justify-center w-48 h-8 md:w-60 md:h-10 rounded-2xl text-sm md:text-base font-semibold border-primary-blue border-2 text-primary-blue"
+            >
               <BuildingOfficeIcon className="icon" />
               <p>Become an organizer</p>
             </button>
+            {editOrganizerOpen && (
+              <BecomeOrganizer toggleOrganizerModal={toggleOrganizerModal} />
+            )}
           </div>
           <Card data={Data} />
         </div>

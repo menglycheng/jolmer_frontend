@@ -5,6 +5,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
 const EditProfile = ({ toggleModal }) => {
+
   const initialProfile = {
     img: "/profile.jpg",
     name: "John Doe",
@@ -42,6 +43,7 @@ const EditProfile = ({ toggleModal }) => {
 
   const handleClose = () => {
     toggleModal();
+
   };
 
   const handleImageUpload = (event) => {
@@ -58,6 +60,7 @@ const EditProfile = ({ toggleModal }) => {
     <div>
       <Modal
         isOpen={toggleModal}
+
         onRequestClose={handleClose}
         ariaHideApp={false}
         className="flex items-center justify-center w-screen h-screen"
@@ -173,6 +176,7 @@ const EditProfile = ({ toggleModal }) => {
             <button
               onClick={handleSave}
               className="btn-hover2 w-16 h-8 md:w-20 rounded-xl border-2 border-primary-blue bg-white text-primary-blue font-semibold text-sm"
+
             >
               save
             </button>

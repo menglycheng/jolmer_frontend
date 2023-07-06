@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Data } from "../../../utils/Data";
 import {
   BuildingOfficeIcon,
+
   EyeIcon,
   HeartIcon,
   MapPinIcon,
@@ -18,6 +19,7 @@ const detail = ({ item }) => {
           <img
             alt="profile"
             src="/SmartSpark8-Webinar.jpg"
+
             className="object-cover absolute top-0 left-0 w-full h-full"
           />
         </div>
@@ -25,6 +27,7 @@ const detail = ({ item }) => {
         <div className="px-5">
           <div className="relative bg-primary-box bg-opacity-50 rounded-lg mt-5 flex flex-col md:flex-row py-5 justify-center md:justify-between px-5 md:px-12">
             <div className="flex flex-col md:flex-row items-center space-x-5 space-y-1 md:space-y-0 md:p-10">
+
               <Image
                 width={300}
                 height={300}
@@ -32,6 +35,7 @@ const detail = ({ item }) => {
                 alt="profile"
                 src="/download 1.png"
                 className="rounded-lg w-28 h-28 md:w-36 md:h-36 object-cover"
+
               />
               <div className="space-y-2 flex flex-col items-center md:items-start text-primary-lowBlack">
                 <h2 className="font-bold text-2xl lg:text-3xl">Smart Spark</h2>
@@ -50,6 +54,31 @@ const detail = ({ item }) => {
                 <div className="flex items-center space-x-2">
                   <UserGroupIcon className="icon" />
                   <p className="text-sm md:text-base">{item.status}</p>
+
+              <div className="rounded-lg w-28 h-28 md:w-40 md:h-40 border-2 shadow-sm drop-shadow-sm">
+                <BuildingOfficeIcon className="text-primary-lowBrown opacity-80" />
+              </div>
+              <div className="space-y-2 flex flex-col items-center md:items-start text-primary-lowBlack">
+                <h2 className="font-bold text-2xl lg:text-3xl">
+                  {event.title}
+                </h2>
+                <div className="flex items-center space-x-2">
+                  <BuildingOffice2Icon className="icon" />
+                  <p className="text-sm md:text-base">
+                    {event.user?.organizer?.name}
+                  </p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MapPinIcon className="icon" />
+                  <p className="text-sm md:text-base">{event.location}</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <EyeIcon className="icon" />
+                  <p className="text-sm md:text-base">{event.views}</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <UserGroupIcon className="icon" />
+                  <p className="text-sm md:text-base">{event.category}</p>
                 </div>
               </div>
             </div>
@@ -66,12 +95,24 @@ const detail = ({ item }) => {
                   </div>
                   <div>
                     <p className="text-sm">Regisration Deadline</p>
+
                     <p className="font-bold">{item.Date}</p>
                   </div>
                 </div>
                 <button className="w-28 h-10 md:w-full rounded-xl border-2 bg-primary-blue text-white font-semibold text-sm md:text-base hover:border-2 hover:border-primary-blue hover:text-primary-blue hover:bg-white">
                   Register
                 </button>
+
+                    <p className="font-bold">{event.deadline}</p>
+                  </div>
+                </div>
+                <Link
+                  href={event.registerUrl}
+                  className="w-28 h-10 md:w-full rounded-xl border-2 bg-primary-blue text-white font-semibold text-sm md:text-base hover:border-2 hover:border-primary-blue hover:text-primary-blue hover:bg-white flex items-center justify-center"
+                >
+                  Register
+                </Link>
+
               </div>
             </div>
           </div>
@@ -86,6 +127,7 @@ const detail = ({ item }) => {
         </div>
         <div className="px-5">
           <div className="relative bg-primary-box bg-opacity-50 rounded-lg mt-5 py-5 px-5 md:px-10">
+
             <h2 className="font-semibold text-xl md:text-2xl">Smart Spark</h2>
             <p className="text-sm md:text-base">
               Lorem ipsum dolor sit amet consectetur. Sem viverra nisl etiam
@@ -93,6 +135,12 @@ const detail = ({ item }) => {
               Lorem ipsum dolor sit amet consectetur. Sem viverra nisl etiam
               condimentum at.
             </p>
+
+            <h2 className="font-semibold text-xl md:text-2xl">{event.title}</h2>
+            <div className="text-sm md:text-base">
+              <div dangerouslySetInnerHTML={{ __html: event.description }} />
+              {/* {event.description} */}
+            </div>
           </div>
         </div>
       </div>
@@ -101,6 +149,7 @@ const detail = ({ item }) => {
 };
 
 export async function getServerSideProps({ query }) {
+
   const { id } = query;
 
   // Find the item with the matching id in the Data array
@@ -109,6 +158,7 @@ export async function getServerSideProps({ query }) {
   if (!item) {
     // If the item is not found, you can handle it as per your requirements
     // For example, you can redirect the user to an error page or display a message
+
     return {
       redirect: {
         destination: "/error", // Replace with your error page route

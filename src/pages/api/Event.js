@@ -2,7 +2,6 @@ import axios from "axios";
 
 export async function getEvent() {
   try {
-    // const response = await axios.get("https://cataas.com/api/cats?tags=cute");
     const response = await axios.get(
       "https://api.jolmer.me/api/v1/events?status=all&category=all"
     );

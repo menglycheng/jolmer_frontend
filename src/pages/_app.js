@@ -19,6 +19,7 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
         {!isLoginPage && !isRegisterPage && <Footer />}
       </div>
+
       </SessionProvider>
     </RecoilRoot>
   );
