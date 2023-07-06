@@ -172,7 +172,7 @@ const EditProfile = ({ toggleProfileModal }) => {
             </button>
             <button
               onClick={handleSave}
-              className="btn-hover2 w-16 h-8 md:w-20 rounded-xl border-2 border-primary-blue bg-white text-primary-blue font-semibold text-sm"
+              className="btn-hover2 w-16 h-8 md:w-20 rounded-xl bg-primary-blue text-white border-2 border-primary-blue font-semibold text-sm hover:text-primary-blue hover:bg-white"
             >
               save
             </button>
