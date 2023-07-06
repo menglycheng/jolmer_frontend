@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bottom-0 py-10 max-w-screen-xl mx-auto z-20 mt-20 px-5">
+    <footer className="py-10 max-w-screen-xl mx-auto z-20 mt-20 px-5">
       <div className="flex justify-center items-center">
         <div className="flex flex-col px-5 md:flex-row divide-y md:divide-y-0 md:divide-x space-y-5 md:space-y-0 divide-gray-300 lg:space-x-28">
           <div className="lg:pr-10 md:px-5">
@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
