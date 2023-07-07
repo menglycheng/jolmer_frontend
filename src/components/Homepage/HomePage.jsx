@@ -4,37 +4,17 @@ import {
   MegaphoneIcon,
   WalletIcon,
 } from "@heroicons/react/24/outline";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Data } from "../../../utils/Data";
 import Card from "./Card";
-import { getEvent } from "@/pages/api/Event";
-import Paginator from "./Paginator";
+// import { getEvent } from "@/pages/api/Event";
 
 const HomePage = () => {
   const [showAll, setShowAll] = useState(true);
   const [showCompetition, setShowCompetition] = useState(false);
   const [showVolunteer, setShowVolunteer] = useState(false);
-  const [EventData, setEventData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const eventsPerPage = 8;
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  async function fetchData() {
-    try {
-      const data = await getEvent();
-      setEventData(data);
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-      setError(true);
-      setLoading(false);
-    }
-  }
-
+  // const EventData = getEvent();
+  // console.log(EventData);
   const handleShowAll = () => {
     setShowAll(true);
     setShowCompetition(false);
@@ -53,34 +33,19 @@ const HomePage = () => {
     setShowVolunteer(true);
   };
 
-  const currentDate = new Date();
-
-  const filteredData = EventData.filter((item) => {
+  const filteredData = Data.filter((item) => {
     if (showAll) {
-      return new Date(item.deadline) > currentDate;
+      return true;
     } else if (showCompetition) {
-      return (
-        item.category === "COMPETITION" && new Date(item.deadline) > currentDate
-      );
+      return item.status === "Competition";
     } else if (showVolunteer) {
-      return (
-        item.category === "VOLUNTEER" && new Date(item.deadline) > currentDate
-      );
+      return item.status === "Volunteer";
     }
     return false;
   });
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const indexOfLastEvent = currentPage * eventsPerPage;
-  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-  const currentEvents = filteredData.slice(indexOfFirstEvent, indexOfLastEvent);
-  const totalEvents = filteredData.length;
-
   return (
-    <div className="px-5 max-w-screen-xl mx-auto flex flex-col min-h-screen">
+    <div className="px-5 max-w-screen-xl mx-auto">
       <div className="flex justify-center md:justify-between items-center">
         <h3 className="hidden lg:inline text-2xl text-primary-lowBlack font-bold">
           Explore
@@ -125,35 +90,7 @@ const HomePage = () => {
           <MagnifyingGlassIcon className="icon" />
         </button>
       </div>
-      <div className="flex-grow">
-        {loading ? (
-          <div class="h-screen">
-            <div class="flex justify-center items-center h-full">
-              <img
-                class="h-16 w-16"
-                src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
-                alt=""
-              />
-            </div>
-          </div>
-        ) : error ? (
-          <div class="h-screen">
-            <div class="flex justify-center items-center h-full">
-              <h1 className="text-4xl font-semibold">No Event</h1>
-            </div>
-          </div>
-        ) : (
-          <Card data={currentEvents} />
-        )}
-      </div>
-      <div className="mt-10 mx-auto flex justify-center">
-        <Paginator
-          totalEvents={totalEvents}
-          eventsPerPage={eventsPerPage}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
-      </div>
+      <Card data={filteredData} />
     </div>
   );
 };
