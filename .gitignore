@@ -46,7 +46,8 @@ logs
 
 node_modules
 bower_components
-
+package-lock.json
+yarn.lock
 *.sublime*
 
 psd
