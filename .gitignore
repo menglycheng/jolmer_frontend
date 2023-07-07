@@ -1,9 +1,9 @@
-# Created by https://www.toptal.com/developers/gitignore/api/react,nextjs
-# Edit at https://www.toptal.com/developers/gitignore?templates=react,nextjs
+# Created by https://www.toptal.com/developers/gitignore/api/nextjs,react
+# Edit at https://www.toptal.com/developers/gitignore?templates=nextjs,react
 
 ### NextJS ###
 # dependencies
-./node_modules
+/node_modules
 /.pnp
 .pnp.js
 
@@ -53,7 +53,4 @@ psd
 thumb
 sketch
 
-# End of https://www.toptal.com/developers/gitignore/api/react,nextjs
-node_modules
-node_modules
-node_modules
+# End of https://www.toptal.com/developers/gitignore/api/nextjs,react
