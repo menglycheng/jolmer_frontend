@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/react,nextjs
-# Edit at https://www.toptal.com/developers/gitignore?templates=react,nextjs
+# Created by https://www.toptal.com/developers/gitignore/api/nextjs,react
+# Edit at https://www.toptal.com/developers/gitignore?templates=nextjs,react
 
 ### NextJS ###
 # dependencies
@@ -46,11 +46,12 @@ logs
 
 node_modules
 bower_components
-
+package-lock.json
+yarn.lock
 *.sublime*
 
 psd
 thumb
 sketch
 
-# End of https://www.toptal.com/developers/gitignore/api/react,nextjs
+# End of https://www.toptal.com/developers/gitignore/api/nextjs,react
