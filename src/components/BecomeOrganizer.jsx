@@ -152,7 +152,7 @@ const BecomeOrganizer = ({ toggleOrganizerModal }) => {
 
             <div className="bg-primary-input rounded-lg p-2 px-4">
               <label className="block text-sm font-medium" htmlFor="role">
-                Instagram URL
+                Instagram URL.
               </label>
               <div>
                 <input
