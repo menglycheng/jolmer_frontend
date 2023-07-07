@@ -4,7 +4,7 @@ import NavbarLoginRegister from "@/components/NavbarLoginRegister";
 import "@/styles/globals.css";
 import { useRouter } from "next/router";
 import { RecoilRoot } from "recoil";
-import { SessionProvider } from "next-auth/react";
+import {SessionProvider} from "next-auth/react"
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -14,15 +14,11 @@ export default function App({ Component, pageProps }) {
   return (
     <RecoilRoot>
       <SessionProvider session={pageProps.session}>
-        <div className="flex flex-col min-h-screen">
-          {!isLoginPage && !isRegisterPage ? <Navbar /> : null}
-          <div className="flex-grow">
-            <div className="h-full">
-              <Component {...pageProps} />
-            </div>
-          </div>
-          {!isLoginPage && !isRegisterPage && <Footer />}
-        </div>
+      <div className="flex flex-col min-h-screen">
+        {!isLoginPage && !isRegisterPage ? <Navbar /> : null}
+        <Component {...pageProps} />
+        {!isLoginPage && !isRegisterPage && <Footer />}
+      </div>
       </SessionProvider>
     </RecoilRoot>
   );
