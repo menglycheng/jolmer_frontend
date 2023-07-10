@@ -3,14 +3,19 @@ import { PencilIcon } from "@heroicons/react/24/solid";
 import Modal from "react-modal";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { userAtom } from "../../recoil/user/userAtom";
+import { useRecoilValue } from "recoil";
+import { updateProfile } from "@/pages/api/Profile";
 
 const EditProfile = ({ toggleProfileModal }) => {
+  const userData = useRecoilValue(userAtom);
+
   const initialProfile = {
-    img: "/profile.jpg",
-    name: "John Doe",
-    bio: "Lorem ipsum dolor sit amet.",
-    role: "Developer",
-    gender: "Male",
+    img: userData.imageUrl,
+    name: userData.name,
+    bio: userData.description,
+    role: userData.affiliation,
+    gender: userData.gender,
   };
 
   const [profile, setProfile] = useState(initialProfile);
@@ -28,10 +33,31 @@ const EditProfile = ({ toggleProfileModal }) => {
     }));
   };
 
-  const handleSave = () => {
-    setProfile(formProfile);
-    console.log("Saved:", formProfile);
-    handleClose();
+  const handleSave = async () => {
+    const UserData = {
+      ...formProfile,
+      imageUrl: formProfile.img,
+      name: formProfile.name,
+      description: formProfile.bio,
+      affiliation: formProfile.role,
+      gender: formProfile.gender,
+    };
+
+    delete UserData.role;
+    delete UserData.bio;
+    delete UserData.img;
+
+    try {
+      const response = await updateProfile(UserData);
+      console.log("User updated:", response);
+      // Reset the form after successful creation
+      setProfile(formProfile);
+      console.log("Saved:", formProfile);
+      handleClose();
+      window.location.reload(true);
+    } catch (error) {
+      console.error("Error creating event:", error);
+    }
   };
 
   const handleCancel = () => {
@@ -46,11 +72,19 @@ const EditProfile = ({ toggleProfileModal }) => {
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    const imageURL = URL.createObjectURL(file);
-    setFormProfile((prevFormProfile) => ({
-      ...prevFormProfile,
-      img: imageURL,
-    }));
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      // console.log(reader.result);
+      setFormProfile((prevFormEvent) => ({
+        ...prevFormEvent,
+        img: reader.result,
+      }));
+    };
+    reader.onerror = (error) => {
+      console.log("error", error);
+    };
   };
   // console.log("Uploaded:", selectedImage);
 
@@ -61,7 +95,7 @@ const EditProfile = ({ toggleProfileModal }) => {
         onRequestClose={handleClose}
         ariaHideApp={false}
         className="flex items-center justify-center w-screen h-screen"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-70"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-80 z-50"
       >
         <div className="bg-white w-[80%] md:w-[45%] lg:w-[25%] rounded-xl py-5">
           <div className="flex items-center justify-between px-5 pb-5">
@@ -79,9 +113,11 @@ const EditProfile = ({ toggleProfileModal }) => {
                 <Image
                   width={300}
                   height={300}
-                  src={formProfile.img}
-                  alt="Profile"
-                  className="object-cover"
+                  priority={false}
+                  alt="profile"
+                  src={formProfile.img ?? "/profile.png"}
+                  // src="/profile.png"
+                  className="rounded-full w-16 h-16 object-cover"
                 />
               </div>
               <div className="w-4 h-4 bg-white rounded-full absolute top-0 left-10 flex justify-center items-center">
@@ -135,14 +171,25 @@ const EditProfile = ({ toggleProfileModal }) => {
                 Position
               </label>
               <div>
-                <input
+                {/* <input
                   className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
                   type="text"
                   id="role"
                   name="role"
                   value={formProfile.role}
                   onChange={handleChange}
-                />
+                /> */}
+                <select
+                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
+                  id="role"
+                  name="role"
+                  value={formProfile.role}
+                  onChange={handleChange}
+                >
+                  <option value="STUDENT">Student</option>
+                  <option value="TEACHER">Teacher</option>
+                  <option value="PARENT">Parent</option>
+                </select>
               </div>
             </div>
             <div className="bg-primary-input rounded-lg p-2 px-4">
@@ -157,8 +204,9 @@ const EditProfile = ({ toggleProfileModal }) => {
                   value={formProfile.gender}
                   onChange={handleChange}
                 >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
+                  <option value="MALE">Male</option>
+                  <option value="FEMALE">Female</option>
+                  <option value="OTHER">Other</option>
                 </select>
               </div>
             </div>
@@ -179,7 +227,6 @@ const EditProfile = ({ toggleProfileModal }) => {
           </div>
         </div>
       </Modal>
-      ;
     </div>
   );
 };

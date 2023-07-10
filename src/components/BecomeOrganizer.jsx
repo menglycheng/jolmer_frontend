@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { becomeOrganizer } from "@/pages/api/Profile";
 
 const BecomeOrganizer = ({ toggleOrganizerModal }) => {
   const OrganizerForm = {
@@ -53,12 +54,13 @@ const BecomeOrganizer = ({ toggleOrganizerModal }) => {
     }
 
     try {
-      //   const response = await postEvent(eventData);
-      //   console.log("Event created:", response);
-      //   // Reset the form after successful creation
+      const response = await becomeOrganizer(formEvent);
+      console.log("BecomeOrganizer created:", response);
+      // Reset the form after successful creation
       setFormEvent(OrganizerForm);
       console.log("Saved:", formEvent);
       handleClose();
+      window.location.reload(true);
     } catch (error) {
       console.error("Error creating event:", error);
     }
@@ -79,7 +81,7 @@ const BecomeOrganizer = ({ toggleOrganizerModal }) => {
         onRequestClose={handleClose}
         ariaHideApp={false}
         className="flex items-center justify-center w-screen h-screen"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-70"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-70 z-50"
       >
         <div className="bg-white w-[80%] md:w-[45%] lg:w-[25%] rounded-xl py-5">
           <div className="flex items-center justify-between px-5 pb-5">
@@ -106,7 +108,7 @@ const BecomeOrganizer = ({ toggleOrganizerModal }) => {
                   name="name"
                   value={formEvent.name}
                   onChange={handleChange}
-                  placeholder="Enter your name"
+                  placeholder="Enter your organizer name"
                 />
               </div>
             </div>

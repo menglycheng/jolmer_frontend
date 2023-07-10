@@ -2,10 +2,11 @@ import React from "react";
 import { EyeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import CountdownTimer from "./CountDown";
 
 const Card = ({ data }) => {
   return (
-    <div className="grid grid-flow-row md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-6 place-content-center mt-20">
+    <div className="grid grid-flow-row sm:grid-cols-2 lg:grid-cols-4 gap-6 place-content-center mt-20">
       {data.map((item) => (
         <Link
           key={item.id}
@@ -29,9 +30,10 @@ const Card = ({ data }) => {
             <h5 class="mb-2 text-2xl text-center font-bold truncate max-w-xs">
               {item.title}
             </h5>
-            <p class="mb-3 font-normal text-center text-gray-700">
-              {item.deadline}
+            <p class="py-3 mb-3 flex justify-center">
+              <CountdownTimer deadline={item.deadline} />
             </p>
+
             <div class="flex items-center text-sm justify-between space-x-2">
               <div className="flex items-center space-x-1">
                 <MapPinIcon className="icon" />
