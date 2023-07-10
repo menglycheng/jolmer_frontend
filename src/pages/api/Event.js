@@ -1,4 +1,5 @@
 import axios from "axios";
+import { token } from "../../../utils/Token";
 
 export async function getEvent() {
   try {
@@ -26,8 +27,6 @@ export async function getEventById(id) {
 
 export async function postEvent(eventData) {
   try {
-    const token =
-      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5ZWFuLnNvdmFudmF0aGFuYTE5QGtpdC5lZHUua2giLCJpYXQiOjE2ODg1Mjk1MTUsImV4cCI6MTY4ODUyOTgxNX0.3vcBHCr3EimkYtNXY0kUDST6Tr1terq3BgwjPYgpldI";
     const headers = {
       Authorization: `Bearer ${token}`,
     };
@@ -43,13 +42,3 @@ export async function postEvent(eventData) {
     throw error;
   }
 }
-
-// export async function getArtist() {
-//   const res = await fetch(`https://cataas.com/api/cats?tags=cute`);
-//   return res.json();
-// }
-
-// export async function getArtistAlbums(username) {
-//   const res = await fetch(`https://api.example.com/artist/${username}/albums`);
-//   return res.json();
-// }

@@ -79,7 +79,7 @@ const BecomeOrganizer = ({ toggleOrganizerModal }) => {
         onRequestClose={handleClose}
         ariaHideApp={false}
         className="flex items-center justify-center w-screen h-screen"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-70"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-70 z-50"
       >
         <div className="bg-white w-[80%] md:w-[45%] lg:w-[25%] rounded-xl py-5">
           <div className="flex items-center justify-between px-5 pb-5">
