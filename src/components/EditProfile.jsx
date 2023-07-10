@@ -11,7 +11,7 @@ const EditProfile = ({ toggleProfileModal }) => {
   const userData = useRecoilValue(userAtom);
 
   const initialProfile = {
-    img: userData.imgUrl,
+    img: userData.imageUrl,
     name: userData.name,
     bio: userData.description,
     role: userData.affiliation,
@@ -54,6 +54,7 @@ const EditProfile = ({ toggleProfileModal }) => {
       setProfile(formProfile);
       console.log("Saved:", formProfile);
       handleClose();
+      window.location.reload(true);
     } catch (error) {
       console.error("Error creating event:", error);
     }
@@ -170,14 +171,25 @@ const EditProfile = ({ toggleProfileModal }) => {
                 Position
               </label>
               <div>
-                <input
+                {/* <input
                   className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
                   type="text"
                   id="role"
                   name="role"
                   value={formProfile.role}
                   onChange={handleChange}
-                />
+                /> */}
+                <select
+                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input"
+                  id="role"
+                  name="role"
+                  value={formProfile.role}
+                  onChange={handleChange}
+                >
+                  <option value="STUDENT">Student</option>
+                  <option value="TEACHER">Teacher</option>
+                  <option value="PARENT">Parent</option>
+                </select>
               </div>
             </div>
             <div className="bg-primary-input rounded-lg p-2 px-4">

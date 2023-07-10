@@ -45,3 +45,21 @@ export async function getEventUser(username) {
     throw error;
   }
 }
+
+export async function becomeOrganizer(OrganizerData) {
+  try {
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    const response = await axios.post(
+      "https://api.jolmer.me/api/v1/user/organizer",
+      OrganizerData,
+      { headers }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}

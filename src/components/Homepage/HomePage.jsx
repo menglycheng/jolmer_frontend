@@ -39,18 +39,21 @@ const HomePage = () => {
     setShowAll(true);
     setShowCompetition(false);
     setShowVolunteer(false);
+    setCurrentPage(1); // Reset currentPage to 1 when changing the category
   };
 
   const handleShowCompetition = () => {
     setShowAll(false);
     setShowCompetition(true);
     setShowVolunteer(false);
+    setCurrentPage(1); // Reset currentPage to 1 when changing the category
   };
 
   const handleShowVolunteer = () => {
     setShowAll(false);
     setShowCompetition(false);
     setShowVolunteer(true);
+    setCurrentPage(1); // Reset currentPage to 1 when changing the category
   };
 
   const currentDate = new Date();

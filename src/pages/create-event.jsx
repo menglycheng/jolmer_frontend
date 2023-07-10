@@ -266,6 +266,7 @@ const createEvent = () => {
                     type="file"
                     className="hidden"
                     name="file"
+                    accept="image/*"
                     onChange={handleImageUpload}
                   />
                 </div>
