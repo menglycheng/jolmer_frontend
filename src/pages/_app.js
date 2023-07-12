@@ -10,18 +10,32 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   const isLoginPage = router.pathname === "/login";
   const isRegisterPage = router.pathname === "/register";
+  const isForgotPassword = router.pathname === "/forgetPassword";
+  const isChangePassword = router.pathname === "/changePassword";
+  const isEmailVerification = router.pathname === "/emailVerification";
+  const isEmailVerified = router.pathname === "/emailVerified";
 
   return (
     <RecoilRoot>
       <SessionProvider session={pageProps.session}>
         <div className="flex flex-col min-h-screen">
-          {!isLoginPage && !isRegisterPage ? <Navbar /> : null}
+          {!isLoginPage && 
+          !isRegisterPage && 
+          !isForgotPassword && 
+          !isChangePassword &&
+          !isEmailVerification &&
+          !isEmailVerified ? <Navbar /> : null}
           <div className="flex-grow">
             <div className="h-full">
               <Component {...pageProps} />
             </div>
           </div>
-          {!isLoginPage && !isRegisterPage && <Footer />}
+          {!isLoginPage && 
+           !isRegisterPage && 
+           !isForgotPassword && 
+           !isChangePassword &&
+           !isEmailVerification &&
+           !isEmailVerified && <Footer />}
         </div>
       </SessionProvider>
     </RecoilRoot>
