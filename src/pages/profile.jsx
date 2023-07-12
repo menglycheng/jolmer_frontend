@@ -6,7 +6,6 @@ import {
   BuildingOfficeIcon,
 } from "@heroicons/react/24/solid";
 import Card from "@/components/Homepage/Card";
-import { Data } from "../../utils/Data";
 import EditProfile from "@/components/EditProfile";
 import BecomeOrganizer from "@/components/BecomeOrganizer";
 import { getProfile } from "./api/Profile";
@@ -90,6 +89,14 @@ const profile = () => {
                 {userProfile.description}
               </p>
               <div className="flex md:flex-col space-x-4 md:space-x-0 md:space-y-1">
+                {userProfile.organizer && (
+                  <div className="flex items-center space-x-2">
+                    <BuildingOfficeIcon className="icon" />
+                    <p className="font-semibold text-sm md:text-base">
+                      {userProfile.organizer?.name}
+                    </p>
+                  </div>
+                )}
                 <div className="flex items-center space-x-2">
                   <BriefcaseIcon className="icon" />
                   <p className="font-semibold text-sm md:text-base">

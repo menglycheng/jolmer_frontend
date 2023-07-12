@@ -1,2 +1,2 @@
 export const token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzb3ZhbnZhdGhhbmF5ZWFuQGdtYWlsLmNvbSIsImlhdCI6MTY4OTEzMDIxMiwiZXhwIjoxNjg5MTMwNTEyfQ.uATxWT9VPbVZzThbKvMY_fXJkC9-DKGaff_kfmhez5Q";
+  "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5ZWFuLnNvdmFudmF0aGFuYTE5QGtpdC5lZHUua2giLCJpYXQiOjE2ODkxNDI4MTIsImV4cCI6MTY4OTE0MzExMn0.9Y-0CR70WA_A-SeIcHzqurEUku4eFXoWRvk8U78I4ck";
