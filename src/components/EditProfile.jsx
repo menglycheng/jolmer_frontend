@@ -166,25 +166,27 @@ const EditProfile = ({ toggleProfileModal }) => {
               </div>
             </div>
 
-            <div className="bg-primary-input rounded-lg p-2 px-4">
-              <label
-                className="block text-sm font-medium text-primary-lowBrown"
-                htmlFor="role"
-              >
-                Organization
-              </label>
-              <div>
-                <input
-                  className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input text-primary-lowBrown"
-                  type="text"
-                  id="name"
-                  name="name"
-                  disabled
-                  value={formProfile.organization?.name}
-                  onChange={handleChange}
-                />
+            {formProfile.organization && (
+              <div className="bg-primary-input rounded-lg p-2 px-4">
+                <label
+                  className="block text-sm font-medium text-primary-lowBrown"
+                  htmlFor="role"
+                >
+                  Organization
+                </label>
+                <div>
+                  <input
+                    className="w-full font-semibold md:text-lg text-base focus:bg-transparent focus:outline-none bg-primary-input text-primary-lowBrown"
+                    type="text"
+                    id="name"
+                    name="name"
+                    disabled
+                    value={formProfile.organization?.name}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="bg-primary-input rounded-lg p-2 px-4">
               <label className="block text-sm font-medium" htmlFor="role">

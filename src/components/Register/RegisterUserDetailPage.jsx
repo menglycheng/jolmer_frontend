@@ -4,16 +4,16 @@ import { user_details_validate } from "../../../lib/validation";
 import { useFormik } from "formik";
 import { useRecoilState } from "recoil";
 import { activeTabState } from "../../../recoil/register/atom";
-
+import { userRegisterState } from "../../../recoil/register/atom";
 
 const RegisterUserDetailPage = () => {
-
   const [activeTab, setActiveTab] = useRecoilState(activeTabState);
+  const [userRegister, setUserRegister] = useRecoilState(userRegisterState);
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
-  
+
   const formik = useFormik({
     initialValues: {
       firstname: "",
@@ -26,6 +26,13 @@ const RegisterUserDetailPage = () => {
 
   async function onSubmit(values) {
     setActiveTab("choosePasswordTab");
+    setUserRegister({
+      ...userRegister,
+      firstName: values.firstname,
+      lastName: values.lastname,
+      email: values.email,
+    });
+
     console.log(values);
   }
 
