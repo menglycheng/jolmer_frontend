@@ -20,6 +20,7 @@ const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 8;
   const [active, setActive] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleClick = () => {
     setActive(!active);
@@ -79,15 +80,30 @@ const HomePage = () => {
     return false;
   });
 
+  const filteredEvents = filteredData.filter((event) =>
+    event.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  // const indexOfLastEvent = currentPage * eventsPerPage;
+  // const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  // const currentEvents = filteredData.slice(indexOfFirstEvent, indexOfLastEvent);
+  // const totalEvents = filteredData.length;
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-  const currentEvents = filteredData.slice(indexOfFirstEvent, indexOfLastEvent);
-  const totalEvents = filteredData.length;
+  const currentEvents = filteredEvents.slice(
+    indexOfFirstEvent,
+    indexOfLastEvent
+  );
+  const totalEvents = filteredEvents.length;
 
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
   return (
     <div className="px-5 max-w-screen-xl mx-auto flex flex-col min-h-screen">
       <div className="flex flex-col md:flex-row justify-center md:justify-between items-center">
@@ -135,6 +151,8 @@ const HomePage = () => {
           <input
             type="text"
             placeholder="Search"
+            value={searchQuery}
+            onChange={handleSearch}
             className={`${
               active ? "h-8 md:w-44 md:h-10" : "w-full h-8 md:w-0 md:h-10"
             } text-primary-lowBlack border-2 border-primary-lowBlack rounded-full transition-all ease-in-out duration-500  px-4`}
@@ -172,5 +190,25 @@ const HomePage = () => {
     </div>
   );
 };
+
+export async function getServerSideProps({ query }) {
+  try {
+    const { id } = query;
+    const event = await getEventById(id);
+
+    return {
+      props: {
+        event,
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/error", // Replace with your error page route
+        permanent: false,
+      },
+    };
+  }
+}
 
 export default HomePage;
