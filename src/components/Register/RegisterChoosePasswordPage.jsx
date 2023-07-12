@@ -4,10 +4,15 @@ import { useFormik } from "formik";
 import { choose_pass_validation } from "../../../lib/validation";
 import { useRecoilState } from "recoil";
 import { activeTabState } from "../../../recoil/register/atom";
+import { registerApi } from "@/axios/auth/registerApi";
+import { userRegisterState } from "../../../recoil/register/atom";
+import { useRouter } from "next/router";
 
 const RegisterChoosePasswordPage = () => {
-  
   const [activeTab, setActiveTab] = useRecoilState(activeTabState);
+  const [userRegister, setUserRegister] = useRecoilState(userRegisterState);
+  const [error, setError] = useState(null);
+  const router = useRouter();
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
@@ -23,10 +28,37 @@ const RegisterChoosePasswordPage = () => {
   });
 
   async function onSubmit(values) {
+    setUserRegister((userRegisterValues) => ({
+      ...userRegisterValues,
+      password: values.password,
+    }));
+
+    const userRegisterData = {
+      ...userRegister,
+      password: values.password,
+    };
+
     if (values.submitButton === "organizer") {
       setActiveTab("beOrganizerTab");
+    } else {
+      try {
+        console.log(userRegisterData);
+        const response = await registerApi(userRegisterData);
+        console.log(response);
+
+        if (response.status === 201) {
+          // Redirect to login page
+          router.push("/login");
+        }
+      } catch (error) {
+        //console.log("Error", error);
+        setError(error.response.data.email);
+        //console.log(error.response.data);
+        throw error;
+      }
     }
-    console.log(values);
+
+    //console.log(values);
   }
 
   const handleButtonClick = (e) => {
@@ -88,6 +120,11 @@ const RegisterChoosePasswordPage = () => {
           >
             Continue sign up
           </button>
+          {error && (
+            <div className="flex items-center justify-center text-xs md:text-sm text-red-700 font-bold mb-3 ">
+              <p>{error}</p>
+            </div>
+          )}
           <button
             type="submit"
             value="organizer"

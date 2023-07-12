@@ -35,11 +35,10 @@ const Navbar = () => {
               About us
             </Link>
             <Link href="/login">
-                <button className="bg-primary-blue rounded-full text-sm md:text-base text-white font-bold w-20 h-8 lg:w-28 lg:h-10">
-                 Join us
-                </button>
+              <button className="bg-primary-blue rounded-full text-sm md:text-base text-white font-bold w-20 h-8 lg:w-28 lg:h-10">
+                Join us
+              </button>
             </Link>
-           
           </div>
         )}
       </header>

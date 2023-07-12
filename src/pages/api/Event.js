@@ -12,7 +12,6 @@ export async function getEvent() {
     throw error;
   }
 }
-
 export async function getEventById(id) {
   try {
     const response = await axios.get(

@@ -5,8 +5,18 @@ import React, { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useFormik } from "formik";
 import { login_validate } from "../../lib/validation";
+import axios from "axios";
+import { userAuthState } from "../../recoil/register/atom";
+import { constSelector, useRecoilState } from "recoil";
+import { useRouter } from "next/router";
+import { loginApi } from "@/axios/auth/loginApi";
 
 const Login = () => {
+  // Recoil state
+  const [userAuth, setUserAuth] = useRecoilState(userAuthState);
+  const router = useRouter();
+  const [error, setError] = useState(null);
+
   // formik hook
   const formik = useFormik({
     initialValues: {
@@ -19,7 +29,37 @@ const Login = () => {
 
   //Login email and password handle
   async function onSubmit(values) {
-    console.log(values);
+    //console.log(values);
+    try {
+      const response = await loginApi(values);
+      const data = response.data;
+
+      if (data) {
+        // Save tokens to localStorage
+        localStorage.setItem(
+          "authTokens",
+          JSON.stringify({
+            access: data.accessToken,
+            refresh: data.refreshToken,
+          })
+        );
+
+        // Update user deatils to recoil state
+        setUserAuth({
+          isLogin: true,
+          user: data.user,
+          accessToken: data.accessToken,
+          refreshToken: data.refreshToken,
+        });
+
+        // Redirect to home page
+        router.push("/");
+      }
+    } catch (error) {
+      // console.log("Error", error.response.data);
+      setError(error.response.data.error);
+      throw error;
+    }
   }
 
   //Google handler Function
@@ -132,6 +172,11 @@ const Login = () => {
               >
                 Login
               </button>
+              {error && (
+                <div className="flex items-center justify-center text-xs md:text-sm text-red-700 font-bold mb-3 ">
+                  <p>{error}</p>
+                </div>
+              )}
               <div className="flex items-center justify-center text-xs md:text-sm ">
                 <p className="mr-3 text-primary-lowRed">Not registered yet?</p>
                 <Link className="text-primary-blue" href="/register">

@@ -2,8 +2,16 @@ import { BuildingOfficeIcon } from "@heroicons/react/24/outline";
 import { useFormik } from "formik";
 import React from "react";
 import { be_organizer_validation } from "../../../lib/validation";
+import { useRecoilState } from "recoil";
+import { userRegisterState } from "../../../recoil/register/atom";
+import { registerApi } from "@/axios/auth/registerApi";
+import { useRouter } from "next/router";
 
 const RegisterBeOrganizerTab = () => {
+  const [userRegister, setUserRegister] = useRecoilState(userRegisterState);
+  const router = useRouter();
+  const [error, setError] = React.useState(null);
+
   const formik = useFormik({
     initialValues: {
       organization_name: "",
@@ -15,7 +23,28 @@ const RegisterBeOrganizerTab = () => {
   });
 
   async function onSubmit(values) {
-    console.log(values);
+    const userRegisterData = {
+      ...userRegister,
+      organizer: {
+        name: values.organization_name,
+        facebook_url: values.organization_facebook,
+        email: values.organization_email,
+      },
+    };
+    try {
+      console.log(userRegisterData);
+      const response = await registerApi(userRegisterData);
+      console.log(response);
+
+      if (response.status === 201) {
+        // Redirect to login page
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log("Error", error);
+      setError(error.response.data.error);
+      throw error;
+    }
   }
 
   return (

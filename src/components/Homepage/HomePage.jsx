@@ -175,6 +175,12 @@ const HomePage = () => {
               <h1 className="text-4xl font-semibold">No Event</h1>
             </div>
           </div>
+        ) : filteredEvents.length === 0 ? (
+          <div class="h-screen">
+            <div class="flex justify-center items-center h-full">
+              <h1 className="text-4xl font-semibold">No Result</h1>
+            </div>
+          </div>
         ) : (
           <Card data={currentEvents} />
         )}
