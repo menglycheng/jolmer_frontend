@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import {
   EyeIcon,
   HeartIcon,
@@ -26,14 +25,6 @@ const detail = ({ event }) => {
         <div className="px-5">
           <div className="relative bg-primary-box bg-opacity-50 rounded-lg mt-5 flex flex-col md:flex-row py-5 justify-center md:justify-between px-5 md:px-12">
             <div className="flex flex-col md:flex-row items-center space-x-5 space-y-1 md:space-y-0 md:p-10">
-              {/* <Image
-                width={300}
-                height={300}
-                priority={false}
-                alt="profile"
-                src="/download 1.png"
-                className="rounded-lg w-28 h-28 md:w-36 md:h-36 object-cover"
-              /> */}
               <div className="rounded-lg w-28 h-28 md:w-40 md:h-40 border-2 shadow-sm drop-shadow-sm">
                 <BuildingOfficeIcon className="text-primary-lowBrown opacity-80" />
               </div>
