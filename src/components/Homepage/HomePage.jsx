@@ -187,12 +187,16 @@ const HomePage = () => {
         )}
       </div>
       <div className="mt-10 mx-auto flex justify-center">
-        <Paginator
-          totalEvents={totalEvents}
-          eventsPerPage={eventsPerPage}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
+        {loading || error ? (
+          <div></div>
+        ) : (
+          <Paginator
+            totalEvents={totalEvents}
+            eventsPerPage={eventsPerPage}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        )}
       </div>
     </div>
   );
