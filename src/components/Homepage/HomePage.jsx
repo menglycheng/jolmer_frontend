@@ -5,10 +5,11 @@ import {
   WalletIcon,
 } from "@heroicons/react/24/outline";
 import React, { useState, useEffect } from "react";
-import Card from "./Card";
+import Card from "../Card";
 import { getEvent } from "@/pages/api/Event";
 import Paginator from "./Paginator";
 import CardSkeleton from "./CardSkeleton";
+import CardEvent from "./CardEvent";
 
 const HomePage = () => {
   const [showAll, setShowAll] = useState(true);
@@ -182,39 +183,23 @@ const HomePage = () => {
             </div>
           </div>
         ) : (
-          <Card data={currentEvents} />
+          <CardEvent data={currentEvents} />
         )}
       </div>
       <div className="mt-10 mx-auto flex justify-center">
-        <Paginator
-          totalEvents={totalEvents}
-          eventsPerPage={eventsPerPage}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
+        {loading || error ? (
+          <div></div>
+        ) : (
+          <Paginator
+            totalEvents={totalEvents}
+            eventsPerPage={eventsPerPage}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        )}
       </div>
     </div>
   );
 };
-
-export async function getServerSideProps({ query }) {
-  try {
-    const { id } = query;
-    const event = await getEventById(id);
-
-    return {
-      props: {
-        event,
-      },
-    };
-  } catch (error) {
-    return {
-      redirect: {
-        destination: "/error", // Replace with your error page route
-        permanent: false,
-      },
-    };
-  }
-}
 
 export default HomePage;

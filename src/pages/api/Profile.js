@@ -37,7 +37,7 @@ export async function updateProfile(userData) {
 export async function getEventUser(username) {
   try {
     const response = await axios.get(
-      `http://api.jolmer.me/api/v1/events/user?username=${username}`
+      `https://api.jolmer.me/api/v1/events/user?username=${username}`
     );
     return response.data;
   } catch (error) {
