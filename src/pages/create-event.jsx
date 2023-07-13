@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import EditDescription from "@/components/EditDescription";
 import { postEvent } from "./api/Event";
@@ -210,7 +210,7 @@ const createEvent = () => {
                     <div>
                       <input
                         className="w-full rounded-sm font-light text-sm md:text-base focus:bg-transparent  bg-primary-input shadow px-2 py-1"
-                        type="date"
+                        type="datetime-local"
                         id="deadline"
                         name="deadline"
                         value={formEvent.deadline}
