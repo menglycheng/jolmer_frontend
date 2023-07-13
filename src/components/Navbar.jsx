@@ -1,11 +1,10 @@
 import React from "react";
 import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/auth/auth";
 
 const Navbar = () => {
-  const token = "fdfd";
-  const { data: session } = useSession();
+  const { user } = useAuth();
 
   return (
     <div>
@@ -17,14 +16,14 @@ const Navbar = () => {
           <FaceSmileIcon className="w-9 h-9" />
           <p className="font-bold text-lg md:text-xl">Jolmer</p>
         </Link>
-        {session ? (
+        {user ? (
           <Link
             href="/profile"
             className="flex items-center justify-center space-x-1 w-28 h-10 md:w-36  border-primary-blue border-2 rounded-2xl text-base md:text-xl text-primary-blue font-semibold"
           >
             {/* <img src="public/vercel.svg" alt="" /> */}
             <FaceSmileIcon className="w-7 h-7 md:w-9 md:h-9" />
-            <p>{session.user.name}</p>
+            <p>{user.firstName}</p>
           </Link>
         ) : (
           <div className="space-x-3 md:space-x-8">
