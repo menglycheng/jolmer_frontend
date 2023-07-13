@@ -12,9 +12,10 @@ const RegisterChoosePasswordPage = () => {
   const [activeTab, setActiveTab] = useRecoilState(activeTabState);
   const [userRegister, setUserRegister] = useRecoilState(userRegisterState);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false); // for loading button
   const router = useRouter();
 
-  const handleTabClick = (tabName) => {
+  const handleTabClick = tabName => {
     setActiveTab(tabName);
   };
 
@@ -28,7 +29,7 @@ const RegisterChoosePasswordPage = () => {
   });
 
   async function onSubmit(values) {
-    setUserRegister((userRegisterValues) => ({
+    setUserRegister(userRegisterValues => ({
       ...userRegisterValues,
       password: values.password,
     }));
@@ -42,26 +43,26 @@ const RegisterChoosePasswordPage = () => {
       setActiveTab("beOrganizerTab");
     } else {
       try {
-        console.log(userRegisterData);
+        setLoading(true);
         const response = await registerApi(userRegisterData);
         console.log(response);
 
         if (response.status === 201) {
-          // Redirect to login page
-          router.push("/login");
+          // Redirect to email-verfication page
+          router.push("/email-verification");
         }
       } catch (error) {
         //console.log("Error", error);
         setError(error.response.data.email);
         //console.log(error.response.data);
         throw error;
+      } finally {
+        setLoading(false);
       }
     }
-
-    //console.log(values);
   }
 
-  const handleButtonClick = (e) => {
+  const handleButtonClick = e => {
     e.preventDefault();
     const buttonValue = e.target.value;
     formik.setFieldValue("submitButton", buttonValue);
@@ -112,14 +113,19 @@ const RegisterChoosePasswordPage = () => {
           ) : (
             <></>
           )}
+
           <button
             type="submit"
             value="continue"
             onClick={handleButtonClick}
-            className="bg-primary-blue text-white py-2 rounded-md border border-1 my-5 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-blue-500"
+            className="bg-primary-blue text-white py-2 rounded-md border border-1 my-5 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-blue-500 space-x-4"
           >
-            Continue sign up
+            {loading && (
+              <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+            )}
+            <span>{loading ? "Registering..." : "Continue sign up"}</span>
           </button>
+
           {error && (
             <div className="flex items-center justify-center text-xs md:text-sm text-red-700 font-bold mb-3 ">
               <p>{error}</p>
