@@ -4,7 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import CountdownTimer from "./CountDown";
 
-const Card = ({ data }) => {
+const CardEvent = ({ data }) => {
+  const currentDate = new Date();
+
   return (
     <div className="grid grid-flow-row sm:grid-cols-2 lg:grid-cols-4 gap-6 place-content-center mt-20">
       {data.map((item) => (
@@ -30,8 +32,14 @@ const Card = ({ data }) => {
             <h5 class="mb-2 text-2xl text-center font-bold truncate max-w-xs">
               {item.title}
             </h5>
-            <p class="py-3 mb-3 flex justify-center">
-              <CountdownTimer deadline={item.deadline} />
+            <p class="py-3 mb-3 flex justify-center flex-grow">
+              {new Date(item.deadline) < currentDate ? (
+                <span className="text-red-400 font-semibold text-3xl py-3">
+                  Event Expired
+                </span>
+              ) : (
+                <CountdownTimer deadline={item.deadline} />
+              )}
             </p>
 
             <div class="flex items-center text-sm justify-between space-x-2">
@@ -51,4 +59,4 @@ const Card = ({ data }) => {
   );
 };
 
-export default Card;
+export default CardEvent;

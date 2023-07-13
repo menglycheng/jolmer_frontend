@@ -41,3 +41,15 @@ export async function postEvent(eventData) {
     throw error;
   }
 }
+
+export async function deleteEvent(id) {
+  try {
+    const response = await axios.delete(
+      `https://api.jolmer.me/api/v1/events/delete?id=${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}

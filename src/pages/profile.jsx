@@ -4,26 +4,34 @@ import {
   BriefcaseIcon,
   UserIcon,
   BuildingOfficeIcon,
+  TrashIcon,
 } from "@heroicons/react/24/solid";
-import Card from "@/components/Homepage/Card";
+
 import EditProfile from "@/components/EditProfile";
 import BecomeOrganizer from "@/components/BecomeOrganizer";
 import { getProfile } from "./api/Profile";
 import { userAtom } from "../../recoil/user/userAtom";
 import { useRecoilState } from "recoil";
 import { getEventUser } from "./api/Profile";
+import CardSkeleton from "@/components/Homepage/CardSkeleton";
+import Card from "@/components/Card";
 
 const profile = () => {
   const [editProfileOpen, setEditProfileOpen] = useState(false);
   const [editOrganizerOpen, setEditOrganizerOpen] = useState(false);
   const [userProfile, setUserProfile] = useRecoilState(userAtom);
   const [EventData, setEventData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [isFavoriteActive, setIsFavoriteActive] = useState(true);
   const [isMyPostActive, setIsMyPostActive] = useState(false);
 
   useEffect(() => {
     fetchData();
-  }, []);
+    if (isMyPostActive) {
+      fetchEvent();
+    }
+  }, [userProfile.username, isMyPostActive]);
 
   async function fetchData() {
     try {
@@ -33,7 +41,18 @@ const profile = () => {
       console.error(error);
     }
   }
-  console.log("userProfile", userProfile);
+
+  async function fetchEvent() {
+    try {
+      const data = await getEventUser(userProfile.username);
+      setEventData(data);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  }
+  // console.log(loading);
   const toggleProfileModal = () => {
     setEditProfileOpen(!editProfileOpen);
   };
@@ -51,19 +70,6 @@ const profile = () => {
     setIsMyPostActive(true);
     setIsFavoriteActive(false);
   };
-
-  useEffect(() => {
-    fetchEvent();
-  }, []);
-
-  async function fetchEvent() {
-    try {
-      const data = await getEventUser(userProfile.username);
-      setEventData(data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   return (
     <div>
@@ -126,7 +132,7 @@ const profile = () => {
         </div>
         <div className="pt-10 px-5 md:px-12 ">
           <div className="flex md:flex-row md:justify-between md:items-center flex-col-reverse ">
-            <div className="space-x-20">
+            <div className="space-x-10 md:space-x-20">
               <button onClick={handleFavoriteButtonClick}>
                 <h1 className="font-semibold text-xl md:text-2xl text-primary-lowBlack">
                   Favorite
@@ -159,7 +165,21 @@ const profile = () => {
               <BecomeOrganizer toggleOrganizerModal={toggleOrganizerModal} />
             )}
           </div>
-          <Card data={EventData} />
+          {isMyPostActive ? (
+            loading ? (
+              <CardSkeleton />
+            ) : error ? (
+              <div className="h-screen">
+                <div className="flex justify-center items-center h-full">
+                  <h1 className="text-4xl font-semibold">No Event</h1>
+                </div>
+              </div>
+            ) : (
+              <Card data={EventData} />
+            )
+          ) : (
+            <p>Favorite</p>
+          )}
         </div>
       </div>
     </div>
