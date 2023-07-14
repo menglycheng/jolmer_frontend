@@ -1,23 +1,28 @@
 import NavbarLoginRegister from "@/components/NavbarLoginRegister";
 import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { login_validate } from "../../lib/validation";
-import { userAuthState } from "../../recoil/register/atom";
-import { constSelector, useRecoilState } from "recoil";
 import { useRouter } from "next/router";
 import { loginApi } from "@/axios/auth/loginApi";
 import { useAuth } from "@/auth/auth";
 import GuestRoute from "@/components/Auth/GuestRoute";
+import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from "@/constants";
 
 const Login = () => {
-  // Recoil state
-  const [userAuth, setUserAuth] = useRecoilState(userAuthState);
   const router = useRouter();
-  const [error, setError] = useState(null);
+  const oauth2Error = router.query.error;
+  const [error, setError] = useState(oauth2Error);
   const { login, loading } = useAuth();
+
+  // Remove the error query parameter from the URL
+  useEffect(() => {
+    if (error) {
+      const newUrl = window.location.pathname;
+      router.replace(newUrl);
+    }
+  }, [error]);
 
   // formik hook
   const formik = useFormik({
@@ -47,14 +52,6 @@ const Login = () => {
     }
   }
 
-  //Google handler Function
-  async function handleGoogleSignIn() {
-    signIn("google", { callbackUrl: "http://localhost:3000" });
-  }
-
-  async function handleFacebookSignIn() {
-    signIn("facebook", { callbackUrl: "http://localhost:3000" });
-  }
   return (
     <GuestRoute>
       <div>
@@ -69,9 +66,8 @@ const Login = () => {
               Please enter your name and email
             </p>
             <div className="flex flex-col text-base">
-              <button
-                type="button"
-                onClick={handleGoogleSignIn}
+              <a
+                href={GOOGLE_AUTH_URL}
                 className="bg-white text-black py-2 rounded-md border border-1 my-3 font-bold border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-gray-200"
               >
                 <img
@@ -80,10 +76,9 @@ const Login = () => {
                   className="w-4 h-4 md:w-6 md:h-6"
                 />
                 <p>Login with Google</p>
-              </button>
-              <button
-                type="button"
-                onClick={handleFacebookSignIn}
+              </a>
+              <a
+                href={FACEBOOK_AUTH_URL}
                 className="bg-primary-blue text-white py-2 rounded-md border border-1 my-3 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-blue-500 "
               >
                 <img
@@ -92,7 +87,7 @@ const Login = () => {
                   className="w-4 h-4 md:w-6 md:h-6"
                 />
                 <p>Login with Facebook</p>
-              </button>
+              </a>
 
               <div className="flex items-center py-6 pb-10">
                 <hr className="border-t border-primary-lowRed flex-grow" />
@@ -163,7 +158,9 @@ const Login = () => {
                 </button>
                 {error && (
                   <div className="flex items-center justify-center text-xs md:text-sm text-red-700 font-bold mb-3 ">
-                    <p>{error}</p>
+                    <p className="text-center smxx:w-60 md:w-80 lg:w-96">
+                      {error}
+                    </p>
                   </div>
                 )}
                 <div className="flex items-center justify-center text-xs md:text-sm ">
