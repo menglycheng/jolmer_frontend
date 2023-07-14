@@ -64,7 +64,7 @@ export function AuthProvider({ children }) {
       } else {
         // Set loading to false
         setLoading(false);
-        
+
         // No access token found, clear the tokens and log the user out
         clearTokens();
       }

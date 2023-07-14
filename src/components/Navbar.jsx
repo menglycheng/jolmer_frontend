@@ -6,7 +6,6 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
   const { user } = useAuth();
-  console.log(user);
 
   return (
     <div>

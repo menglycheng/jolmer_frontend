@@ -5,11 +5,6 @@ export const activeTabState = atom({
   default: "userDetailTab",
 });
 
-export const userAuthState = atom({
-  key: "userAuthState",
-  default: { isLogin: false, user: {}, accessToken: "", refreshToken: "" },
-});
-
 export const userRegisterState = atom({
   key: "userRegisterState",
   default: {
