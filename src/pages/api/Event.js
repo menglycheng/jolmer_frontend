@@ -1,5 +1,4 @@
 import axios from "axios";
-import { token } from "../../../utils/Token";
 
 export async function getEvent() {
   try {
@@ -24,7 +23,7 @@ export async function getEventById(id) {
   }
 }
 
-export async function postEvent(eventData) {
+export async function postEvent(eventData, token) {
   try {
     const headers = {
       Authorization: `Bearer ${token}`,

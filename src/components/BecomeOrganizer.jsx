@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { becomeOrganizer } from "@/pages/api/Profile";
+import { useAuth } from "@/auth/auth";
 
 const BecomeOrganizer = ({ toggleOrganizerModal }) => {
+  const { getAccessToken } = useAuth();
+  const token = getAccessToken();
+
   const OrganizerForm = {
     name: "",
     email: "",
@@ -54,7 +58,7 @@ const BecomeOrganizer = ({ toggleOrganizerModal }) => {
     }
 
     try {
-      const response = await becomeOrganizer(formEvent);
+      const response = await becomeOrganizer(formEvent, token);
       console.log("BecomeOrganizer created:", response);
       // Reset the form after successful creation
       setFormEvent(OrganizerForm);

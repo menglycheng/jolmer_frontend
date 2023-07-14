@@ -3,20 +3,20 @@ import { PencilIcon } from "@heroicons/react/24/solid";
 import Modal from "react-modal";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { userAtom } from "../../recoil/user/userAtom";
-import { useRecoilValue } from "recoil";
 import { updateProfile } from "@/pages/api/Profile";
+import { useAuth } from "@/auth/auth";
 
 const EditProfile = ({ toggleProfileModal }) => {
-  const userData = useRecoilValue(userAtom);
+  const { user, getAccessToken } = useAuth();
+  const token = getAccessToken();
 
   const initialProfile = {
-    img: userData.imageUrl,
-    name: userData.name,
-    bio: userData.description,
-    role: userData.affiliation,
-    gender: userData.gender,
-    organization: userData.organizer,
+    img: user.profilePicture,
+    name: user.name,
+    bio: user.description,
+    role: user.affiliation,
+    gender: user.gender,
+    organization: user.organizer,
   };
 
   const [profile, setProfile] = useState(initialProfile);
@@ -35,21 +35,36 @@ const EditProfile = ({ toggleProfileModal }) => {
   };
 
   const handleSave = async () => {
-    const UserData = {
-      ...formProfile,
-      imageUrl: formProfile.img,
-      name: formProfile.name,
-      description: formProfile.bio,
-      affiliation: formProfile.role,
-      gender: formProfile.gender,
-    };
+    const formData = new FormData();
 
-    delete UserData.role;
-    delete UserData.bio;
-    delete UserData.img;
+    // Append form data fields
+    formData.append("name", formProfile.name);
+    formData.append("description", formProfile.bio);
+    formData.append("affiliation", formProfile.role);
+    formData.append("gender", formProfile.gender);
+
+    // Check if a new image file was selected
+    if (formProfile.img instanceof File) {
+      formData.append("ProfilePicture", formProfile.img);
+    } else if (typeof formProfile.img === "string") {
+      // Convert data URL to a File object
+      try {
+        const response = await fetch(formProfile.img);
+        if (!response.ok) {
+          throw new Error("Failed to fetch the image.");
+        }
+
+        const blob = await response.blob();
+        const file = new File([blob], "profile_picture");
+
+        formData.append("ProfilePicture", file);
+      } catch (error) {
+        console.error("Error fetching or converting the image:", error);
+      }
+    }
 
     try {
-      const response = await updateProfile(UserData);
+      const response = await updateProfile(formData, token);
       console.log("User updated:", response);
       // Reset the form after successful creation
       setProfile(formProfile);
@@ -74,18 +89,16 @@ const EditProfile = ({ toggleProfileModal }) => {
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(file);
 
-    reader.onload = () => {
-      // console.log(reader.result);
+    reader.onload = (e) => {
+      const imageDataUrl = e.target.result;
       setFormProfile((prevFormEvent) => ({
         ...prevFormEvent,
-        img: reader.result,
+        img: imageDataUrl,
       }));
     };
-    reader.onerror = (error) => {
-      console.log("error", error);
-    };
+
+    reader.readAsDataURL(file);
   };
 
   return (
