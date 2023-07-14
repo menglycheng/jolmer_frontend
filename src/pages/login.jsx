@@ -17,7 +17,7 @@ const Login = () => {
   const [userAuth, setUserAuth] = useRecoilState(userAuthState);
   const router = useRouter();
   const [error, setError] = useState(null);
-  const { login } = useAuth();
+  const { login, loading } = useAuth();
 
   // formik hook
   const formik = useFormik({
@@ -156,7 +156,10 @@ const Login = () => {
                   type="submit"
                   className="bg-primary-blue text-white py-2 rounded-md border border-1 my-5 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-blue-500"
                 >
-                  Login
+                  {loading && (
+                    <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                  )}
+                  <>{loading ? "Logging in..." : "Login"}</>
                 </button>
                 {error && (
                   <div className="flex items-center justify-center text-xs md:text-sm text-red-700 font-bold mb-3 ">

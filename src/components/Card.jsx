@@ -4,13 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import CountdownTimer from "./Homepage/CountDown";
 import { TrashIcon } from "@heroicons/react/24/solid";
-import { userAtom } from "../../recoil/user/userAtom";
-import { useRecoilValue } from "recoil";
 import { deleteEvent } from "@/pages/api/Event";
+import { useAuth } from "@/auth/auth";
 
 const Card = ({ data }) => {
   const currentDate = new Date();
-  const userData = useRecoilValue(userAtom);
+  const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -64,7 +63,7 @@ const Card = ({ data }) => {
             <p class="text-[10px] bg-primary-yellow absolute top-2 left-2 rounded-full px-1 py-0.5 font-semibold">
               {item.category}
             </p>
-            {item.user.email === userData.email && (
+            {item.user.email === user.email && (
               <button
                 onClick={(event) => handleDeleteClick(event, item.id)}
                 disabled={isLoading}

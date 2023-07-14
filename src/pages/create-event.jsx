@@ -3,8 +3,15 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 import EditDescription from "@/components/EditDescription";
 import { postEvent } from "./api/Event";
 import AlertMessage from "@/components/AlertMessage";
+import { useAuth } from "@/auth/auth";
+import PrivateRoute from "@/components/Auth/PrivateRoute";
+import { useRouter } from "next/router";
 
 const createEvent = () => {
+  const { getAccessToken } = useAuth();
+  const token = getAccessToken();
+  const router = useRouter();
+
   const EventForm = {
     event_name: "",
     location: "",
@@ -13,6 +20,7 @@ const createEvent = () => {
     registerUrl: "",
     img: "",
     description: "",
+    poster: "",
   };
   const [formEvent, setFormEvent] = useState(EventForm);
   const [formErrors, setFormErrors] = useState({});
@@ -53,18 +61,17 @@ const createEvent = () => {
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(file);
+    console.log(file);
 
-    reader.onload = () => {
-      // console.log(reader.result);
+    reader.onload = (e) => {
+      const imageDataUrl = e.target.result;
       setFormEvent((prevFormEvent) => ({
         ...prevFormEvent,
-        img: reader.result,
+        img: imageDataUrl,
+        poster: file,
       }));
     };
-    reader.onerror = (error) => {
-      console.log("error", error);
-    };
+    reader.readAsDataURL(file);
   };
 
   const handleSave = async () => {
@@ -84,7 +91,11 @@ const createEvent = () => {
     }
 
     if (!formEvent.registerUrl) {
-      errors.registerUrl = "registerUrl is required";
+      errors.registerUrl = "Register Url is required";
+    }
+
+    if (!formEvent.img) {
+      errors.img = "Poster is required";
     }
 
     // Check if there are any errors
@@ -95,23 +106,19 @@ const createEvent = () => {
 
     // If there are no errors, continue with form submission
 
-    const eventData = {
-      ...formEvent,
-      title: formEvent.event_name,
-      category: formEvent.categorize,
-      poster: formEvent.img,
-      registerUrl: formEvent.registerUrl,
-      deadline: formEvent.deadline,
-      description: formEvent.description,
-      location: formEvent.location,
-    };
+    const formData = new FormData();
 
-    delete eventData.event_name;
-    delete eventData.categorize;
-    delete eventData.img;
+    // Append form data fields
+    formData.append("title", formEvent.event_name);
+    formData.append("category", formEvent.categorize);
+    formData.append("registerUrl", formEvent.registerUrl);
+    formData.append("deadline", formEvent.deadline);
+    formData.append("description", formEvent.description);
+    formData.append("location", formEvent.location);
+    formData.append("poster", formEvent.poster);
 
     try {
-      const response = await postEvent(eventData);
+      const response = await postEvent(formData, token);
       console.log("Event created:", response);
       // Reset the form after successful creation
       setFormEvent(EventForm);
@@ -121,6 +128,7 @@ const createEvent = () => {
       setTimeout(() => {
         setMessageAlert(false);
       }, 7000);
+      router.push("/profile");
     } catch (error) {
       console.error("Error creating event:", error);
     }
@@ -135,7 +143,7 @@ const createEvent = () => {
   };
 
   return (
-    <div>
+    <PrivateRoute>
       <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
         <div className="bg-primary-lowBlack relative pb-[20%] md:pb-[10%]">
           <h1 className="text-white font-bold text-xl md:text-2xl top-[35%] left-10 absolute">
@@ -210,7 +218,7 @@ const createEvent = () => {
                     <div>
                       <input
                         className="w-full rounded-sm font-light text-sm md:text-base focus:bg-transparent  bg-primary-input shadow px-2 py-1"
-                        type="datetime-local"
+                        type="date"
                         id="deadline"
                         name="deadline"
                         value={formEvent.deadline}
@@ -265,11 +273,15 @@ const createEvent = () => {
                     id="dropzone-file"
                     type="file"
                     className="hidden"
-                    name="file"
                     accept="image/*"
                     onChange={handleImageUpload}
                   />
                 </div>
+                {formErrors.img && (
+                  <p className="text-red-500 text-base font-semibold mt-2">
+                    {formErrors.img}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -307,7 +319,7 @@ const createEvent = () => {
         </div>
         {messageAlert && <AlertMessage onDismiss={handleDismiss} />}
       </div>
-    </div>
+    </PrivateRoute>
   );
 };
 
