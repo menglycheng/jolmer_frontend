@@ -22,7 +22,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-2">
             {user.organizer && (
               <Link href="/create-event">
-                <button className="flex justify-center items-center bg-primary-blue rounded-full text-sm md:text-base text-white font-bold w-16 h-16 lg:w-16 lg:h-10">
+                <button className="flex justify-center items-center bg-primary-blue rounded-full text-sm md:text-base text-white font-bold w-12 h-8 lg:w-16 lg:h-10">
                   <PlusIcon className="icon" />
                 </button>
               </Link>

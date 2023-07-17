@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import { choose_pass_validation } from "../../../lib/validation";
 import { useRecoilState } from "recoil";
-import { activeTabState } from "../../../recoil/register/atom";
+// import { activeTabState } from "../../../recoil/register/atom";
+import { activeTabState } from "@/recoil/register/atom";
 import { registerApi } from "@/axios/auth/registerApi";
-import { userRegisterState } from "../../../recoil/register/atom";
+// import { userRegisterState } from "../../../recoil/register/atom";
+import { userRegisterState } from "@/recoil/register/atom";
 import { useRouter } from "next/router";
 
 const RegisterChoosePasswordPage = () => {
@@ -15,7 +17,7 @@ const RegisterChoosePasswordPage = () => {
   const [loading, setLoading] = useState(false); // for loading button
   const router = useRouter();
 
-  const handleTabClick = tabName => {
+  const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
 
@@ -29,7 +31,7 @@ const RegisterChoosePasswordPage = () => {
   });
 
   async function onSubmit(values) {
-    setUserRegister(userRegisterValues => ({
+    setUserRegister((userRegisterValues) => ({
       ...userRegisterValues,
       password: values.password,
     }));
@@ -62,7 +64,7 @@ const RegisterChoosePasswordPage = () => {
     }
   }
 
-  const handleButtonClick = e => {
+  const handleButtonClick = (e) => {
     e.preventDefault();
     const buttonValue = e.target.value;
     formik.setFieldValue("submitButton", buttonValue);
