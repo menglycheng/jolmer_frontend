@@ -213,9 +213,13 @@ const EditProfile = ({ toggleProfileModal }) => {
                   value={formProfile.role}
                   onChange={handleChange}
                 >
+                  <option value="" className="text-primary-lowBlack">
+                    plese select...
+                  </option>
                   <option value="STUDENT">Student</option>
                   <option value="TEACHER">Teacher</option>
                   <option value="PARENT">Parent</option>
+                  <option value="ADMIN">Admin</option>
                 </select>
               </div>
             </div>
@@ -231,6 +235,9 @@ const EditProfile = ({ toggleProfileModal }) => {
                   value={formProfile.gender}
                   onChange={handleChange}
                 >
+                  <option value="" className="text-primary-lowBlack">
+                    plese select...
+                  </option>
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
                   <option value="OTHER">Other</option>

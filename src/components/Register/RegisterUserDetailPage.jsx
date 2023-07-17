@@ -3,8 +3,10 @@ import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import { user_details_validate } from "../../../lib/validation";
 import { useFormik } from "formik";
 import { useRecoilState } from "recoil";
-import { activeTabState } from "../../../recoil/register/atom";
-import { userRegisterState } from "../../../recoil/register/atom";
+// import { activeTabState } from "../../../recoil/register/atom";
+import { activeTabState } from "@/recoil/register/atom";
+// import { userRegisterState } from "../../../recoil/register/atom";
+import { userRegisterState } from "@/recoil/register/atom";
 
 const RegisterUserDetailPage = () => {
   const [activeTab, setActiveTab] = useRecoilState(activeTabState);

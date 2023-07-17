@@ -45,7 +45,7 @@ const Card = ({ data }) => {
   };
 
   return (
-    <div className="grid grid-flow-row sm:grid-cols-2 lg:grid-cols-4 gap-6 place-content-center mt-20">
+    <div className="grid grid-flow-row sm:grid-cols-2 lg:grid-cols-4 gap-6 place-content-center mt-10">
       {data.map((item) => (
         <Link
           key={item.id}

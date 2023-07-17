@@ -1,6 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { activeTabState } from "../../../recoil/register/atom";
+// import { activeTabState } from "../../../recoil/register/atom";
+import { activeTabState } from "@/recoil/register/atom";
 
 const RegisterFooter = () => {
   const activeTab = useRecoilValue(activeTabState);

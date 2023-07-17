@@ -3,7 +3,8 @@ import { useFormik } from "formik";
 import React from "react";
 import { be_organizer_validation } from "../../../lib/validation";
 import { useRecoilState } from "recoil";
-import { userRegisterState } from "../../../recoil/register/atom";
+// import { userRegisterState } from "../../../recoil/register/atom";
+import { userRegisterState } from "@/recoil/register/atom";
 import { registerApi } from "@/axios/auth/registerApi";
 import { useRouter } from "next/router";
 

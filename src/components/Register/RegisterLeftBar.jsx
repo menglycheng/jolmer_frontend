@@ -1,8 +1,9 @@
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { activeTabState } from "../../../recoil/register/atom";
+// import { activeTabState } from "../../../recoil/register/atom";
 import NavbarLoginRegister from "../NavbarLoginRegister";
+import { activeTabState } from "@/recoil/register/atom";
 
 const RegisterLeftBar = () => {
   const [activeTab, setActiveTab] = useRecoilState(activeTabState);

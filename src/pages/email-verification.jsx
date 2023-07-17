@@ -2,7 +2,8 @@ import NavbarLoginRegister from "@/components/NavbarLoginRegister";
 import { EnvelopeIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { userRegisterState } from "../../recoil/register/atom";
+// import { userRegisterState } from "../../recoil/register/atom";
+import { userRegisterState } from "@/recoil/register/atom";
 import { useRouter } from "next/router";
 
 const EmailVerification = () => {

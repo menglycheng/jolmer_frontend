@@ -14,6 +14,7 @@ import CardSkeleton from "@/components/Homepage/CardSkeleton";
 import Card from "@/components/Card";
 import { useAuth } from "@/auth/auth";
 import PrivateRoute from "@/components/Auth/PrivateRoute";
+import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
 
 const profile = () => {
   const [editProfileOpen, setEditProfileOpen] = useState(false);
@@ -25,6 +26,7 @@ const profile = () => {
   const [isFavoriteActive, setIsFavoriteActive] = useState(true);
   const [isMyPostActive, setIsMyPostActive] = useState(false);
   // console.log(user);
+  const { logout } = useAuth();
 
   useEffect(() => {
     if (isMyPostActive) {
@@ -61,11 +63,15 @@ const profile = () => {
     setIsFavoriteActive(false);
   };
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <PrivateRoute>
       {user ? (
         <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
-          <div className="bg-primary-lowBlack flex flex-col md:flex-row py-5 justify-center md:justify-between px-5 md:px-12">
+          <div className="relative bg-primary-lowBlack flex flex-col md:flex-row py-5 justify-center md:justify-between px-5 md:px-12">
             <div className="flex flex-col md:flex-row items-center space-x-5 space-y-2 md:space-y-0">
               <div className="w-36 h-36 rounded-full overflow-hidden border-[1px] border-primary-lowBlack bg-white">
                 <Image
@@ -106,6 +112,15 @@ const profile = () => {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="absolute top-4 right-4">
+              <button
+                onClick={handleLogout}
+                className="flex space-x-1 justify-center items-center w-24 h-8 md:w-24 md:h-10 rounded-xl border-2 border-primary-blue text-white font-semibold text-sm hover:bg-primary-blue"
+              >
+                <ArrowRightOnRectangleIcon className="w-5 h-5" />
+                <p>Logout</p>
+              </button>
             </div>
             <div className="flex items-end justify-end mt-5">
               <button

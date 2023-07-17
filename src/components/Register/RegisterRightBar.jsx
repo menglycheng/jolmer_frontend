@@ -1,6 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { activeTabState } from "../../../recoil/register/atom";
+// import { activeTabState } from "../../../recoil/register/atom";
+import { activeTabState } from "@/recoil/register/atom";
 import RegisterBeOrganizerTab from "./RegisterBeOrganizerTab";
 import RegisterChoosePasswordPage from "./RegisterChoosePasswordPage";
 import RegisterFooter from "./RegisterFooter";
