@@ -6,7 +6,7 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
   const { user } = useAuth();
-  console.log(user);
+  // console.log(user);
 
   return (
     <div>
@@ -20,7 +20,7 @@ const Navbar = () => {
         </Link>
         {user ? (
           <div className="flex items-center space-x-2">
-            {user.oranizer && (
+            {user.organizer && (
               <Link href="/create-event">
                 <button className="flex justify-center items-center bg-primary-blue rounded-full text-sm md:text-base text-white font-bold w-16 h-16 lg:w-16 lg:h-10">
                   <PlusIcon className="icon" />

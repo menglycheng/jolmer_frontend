@@ -24,7 +24,7 @@ const profile = () => {
   const [error, setError] = useState(false);
   const [isFavoriteActive, setIsFavoriteActive] = useState(true);
   const [isMyPostActive, setIsMyPostActive] = useState(false);
-  console.log(user);
+  // console.log(user);
 
   useEffect(() => {
     if (isMyPostActive) {
