@@ -80,52 +80,57 @@ const RegisterUserDetailPage = () => {
         </div>
 
         <form onSubmit={formik.handleSubmit}>
-          <p className="font-bold text-sm">First name *</p>
-          <input
-            type="text"
-            name="firstname"
-            placeholder="Enter your firstname"
-            className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 mb-4 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96 "
-            {...formik.getFieldProps("firstname")}
-          ></input>
-          {formik.errors.firstname && formik.touched.firstname ? (
-            <span className=" text-red-700 font-bold">
-              {formik.errors.firstname}
-            </span>
-          ) : (
-            <></>
-          )}
-          <p className="font-bold text-sm">Last name *</p>
-          <input
-            type="text"
-            name="lastname"
-            placeholder="Enter your lastname"
-            className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 mb-4 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
-            {...formik.getFieldProps("lastname")}
-          ></input>
-          {formik.errors.lastname && formik.touched.lastname ? (
-            <span className=" text-red-700 font-bold">
-              {formik.errors.lastname}
-            </span>
-          ) : (
-            <></>
-          )}
-
-          <p className="font-bold text-sm">Email *</p>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 mb-4 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
-            {...formik.getFieldProps("email")}
-          ></input>
-          {formik.errors.email && formik.touched.email ? (
-            <span className=" text-red-700 font-bold">
-              {formik.errors.email}
-            </span>
-          ) : (
-            <></>
-          )}
+          <div className="mb-4">
+            <p className="font-bold text-sm">First name *</p>
+            <input
+              type="text"
+              name="firstname"
+              placeholder="Enter your firstname"
+              className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96 "
+              {...formik.getFieldProps("firstname")}
+            ></input>
+            {formik.errors.firstname && formik.touched.firstname ? (
+              <span className=" text-red-500 font-bold">
+                {formik.errors.firstname}
+              </span>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div className="mb-4">
+            <p className="font-bold text-sm">Last name *</p>
+            <input
+              type="text"
+              name="lastname"
+              placeholder="Enter your lastname"
+              className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
+              {...formik.getFieldProps("lastname")}
+            ></input>
+            {formik.errors.lastname && formik.touched.lastname ? (
+              <span className=" text-red-500 font-bold">
+                {formik.errors.lastname}
+              </span>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div className="mb-4">
+            <p className="font-bold text-sm">Email *</p>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
+              {...formik.getFieldProps("email")}
+            ></input>
+            {formik.errors.email && formik.touched.email ? (
+              <span className=" text-red-500 font-bold">
+                {formik.errors.email}
+              </span>
+            ) : (
+              <></>
+            )}
+          </div>
           <button
             type="submit"
             className="bg-primary-blue text-white py-2 rounded-md border border-1 my-5 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-blue-500"

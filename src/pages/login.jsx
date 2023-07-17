@@ -57,7 +57,7 @@ const Login = () => {
       <div>
         <NavbarLoginRegister />
         <div className="px-5 py-0 max-w-screen-xl mx-auto mt-10 mb-6">
-          <div className="flex flex-col items-center  space-y-4">
+          <div className="flex flex-col items-center space-y-4">
             <FaceSmileIcon className="w-10 h-10 border border-primary-lowOrange rounded-lg p-2" />
             <p className="font-bold text-xl md:text-2xl lg:text-3xl">
               Welcome Back
@@ -96,40 +96,45 @@ const Login = () => {
               </div>
 
               <form onSubmit={formik.handleSubmit}>
-                <p className="font-bold text-sm">Email *</p>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  name="email"
-                  className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 mb-4 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96 "
-                  //onChange={formik.handleChange}
-                  //value={formik.values.email}
-                  {...formik.getFieldProps("email")}
-                ></input>
-                {formik.errors.email && formik.touched.email ? (
-                  <span className=" text-red-700 font-bold">
-                    {formik.errors.email}
-                  </span>
-                ) : (
-                  <></>
-                )}
-                <p className="font-bold text-sm">Password *</p>
-                <input
-                  type="password"
-                  placeholder="Enter your password"
-                  name="password"
-                  className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 mb-4 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
-                  //onChange={formik.handleChange}
-                  //value={formik.values.password}
-                  {...formik.getFieldProps("password")}
-                ></input>
-                {formik.errors.password && formik.touched.password ? (
-                  <span className=" text-red-700 font-bold">
-                    {formik.errors.password}
-                  </span>
-                ) : (
-                  <></>
-                )}
+                <div className="mb-4">
+                  <p className="font-bold text-sm">Email *</p>
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    name="email"
+                    className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96 "
+                    //onChange={formik.handleChange}
+                    //value={formik.values.email}
+                    {...formik.getFieldProps("email")}
+                  ></input>
+                  {formik.errors.email && formik.touched.email ? (
+                    <span className=" text-red-500 font-bold">
+                      {formik.errors.email}
+                    </span>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <p className="font-bold text-sm">Password *</p>
+                  <input
+                    type="password"
+                    placeholder="Enter your password"
+                    name="password"
+                    className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
+                    //onChange={formik.handleChange}
+                    //value={formik.values.password}
+                    {...formik.getFieldProps("password")}
+                  ></input>
+                  {formik.errors.password && formik.touched.password ? (
+                    <span className=" text-red-500 font-bold">
+                      {formik.errors.password}
+                    </span>
+                  ) : (
+                    <></>
+                  )}
+                </div>
 
                 <div className="flex justify-between">
                   <label className=" flex items-center  text-primary-lowRed text-[10px] md:text-sm">
@@ -157,7 +162,7 @@ const Login = () => {
                   <>{loading ? "Logging in..." : "Login"}</>
                 </button>
                 {error && (
-                  <div className="flex items-center justify-center text-xs md:text-sm text-red-700 font-bold mb-3 ">
+                  <div className="flex items-center justify-center text-xs md:text-sm text-red-500 font-bold mb-3 ">
                     <p className="text-center smxx:w-60 md:w-80 lg:w-96">
                       {error}
                     </p>

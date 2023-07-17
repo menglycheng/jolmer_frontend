@@ -85,36 +85,41 @@ const RegisterChoosePasswordPage = () => {
 
       <form onSubmit={formik.handleSubmit}>
         <div className="flex flex-col text-base">
-          <p className="font-bold text-sm">Password *</p>
-          <input
-            type="password"
-            name="password"
-            placeholder="choose a password"
-            className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 mb-4 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
-            {...formik.getFieldProps("password")}
-          ></input>
-          {formik.errors.password && formik.touched.password ? (
-            <span className=" text-red-700 font-bold">
-              {formik.errors.password}
-            </span>
-          ) : (
-            <></>
-          )}
-          <p className="font-bold text-sm">Confirm password *</p>
-          <input
-            type="password"
-            name="conpassword"
-            placeholder="confirm password"
-            className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 mb-4 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
-            {...formik.getFieldProps("conpassword")}
-          ></input>
-          {formik.errors.conpassword && formik.touched.conpassword ? (
-            <span className=" text-red-700 font-bold">
-              {formik.errors.conpassword}
-            </span>
-          ) : (
-            <></>
-          )}
+          <div className="mb-4">
+            <p className="font-bold text-sm">Password *</p>
+            <input
+              type="password"
+              name="password"
+              placeholder="choose a password"
+              className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
+              {...formik.getFieldProps("password")}
+            ></input>
+            {formik.errors.password && formik.touched.password ? (
+              <span className=" text-red-500 font-bold">
+                {formik.errors.password}
+              </span>
+            ) : (
+              <></>
+            )}
+          </div>
+
+          <div className="mb-4">
+            <p className="font-bold text-sm">Confirm password *</p>
+            <input
+              type="password"
+              name="conpassword"
+              placeholder="confirm password"
+              className="bg-white text-black py-2 pl-3 rounded-md border border-1 my-1 border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center items-center w-72 smxx:w-60 md:w-80 lg:w-96"
+              {...formik.getFieldProps("conpassword")}
+            ></input>
+            {formik.errors.conpassword && formik.touched.conpassword ? (
+              <span className=" text-red-500 font-bold">
+                {formik.errors.conpassword}
+              </span>
+            ) : (
+              <></>
+            )}
+          </div>
 
           <button
             type="submit"
@@ -129,7 +134,7 @@ const RegisterChoosePasswordPage = () => {
           </button>
 
           {error && (
-            <div className="flex items-center justify-center text-xs md:text-sm text-red-700 font-bold mb-3 ">
+            <div className="flex items-center justify-center text-xs md:text-sm text-red-500 font-bold mb-3 ">
               <p>{error}</p>
             </div>
           )}
