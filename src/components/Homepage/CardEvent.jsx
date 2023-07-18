@@ -45,7 +45,7 @@ const CardEvent = ({ data }) => {
             <div class="flex items-center text-sm justify-between space-x-2">
               <div className="flex items-center space-x-1">
                 <MapPinIcon className="icon" />
-                <p>{item.location}</p>
+                <p className="truncate max-w-[150px]">{item.location}</p>
               </div>
               <div className="flex items-center space-x-1">
                 <EyeIcon className="icon" />
