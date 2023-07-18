@@ -7,12 +7,13 @@ import { useRecoilState } from "recoil";
 import { activeTabState } from "@/recoil/register/atom";
 // import { userRegisterState } from "../../../recoil/register/atom";
 import { userRegisterState } from "@/recoil/register/atom";
+import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from "@/constants";
 
 const RegisterUserDetailPage = () => {
   const [activeTab, setActiveTab] = useRecoilState(activeTabState);
   const [userRegister, setUserRegister] = useRecoilState(userRegisterState);
 
-  const handleTabClick = (tabName) => {
+  const handleTabClick = tabName => {
     setActiveTab(tabName);
   };
 
@@ -50,8 +51,8 @@ const RegisterUserDetailPage = () => {
         </p>
       </div>
       <div className="flex flex-col text-base">
-        <button
-          type="button"
+        <a
+          href={GOOGLE_AUTH_URL}
           className="bg-white text-black py-2 rounded-md border border-1 my-3 font-bold border-primary-lowRed text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-gray-200"
         >
           <img
@@ -60,9 +61,9 @@ const RegisterUserDetailPage = () => {
             className="w-4 h-4 md:w-6 md:h-6"
           />
           <p>Signup with Google</p>
-        </button>
-        <button
-          type="button"
+        </a>
+        <a
+          href={FACEBOOK_AUTH_URL}
           className="bg-primary-blue text-white py-2 rounded-md border border-1 my-3 font-bold border-primary-blue text-xs md:text-sm lg:text-base flex justify-center space-x-2 items-center w-72 smxx:w-60 md:w-80 lg:w-96 hover:bg-blue-500"
         >
           <img
@@ -71,7 +72,7 @@ const RegisterUserDetailPage = () => {
             className="w-4 h-4 md:w-6 md:h-6"
           />
           <p>Signup with Facebook</p>
-        </button>
+        </a>
 
         <div className="flex items-center py-6 pb-10">
           <hr className="border-t border-primary-lowRed flex-grow" />
