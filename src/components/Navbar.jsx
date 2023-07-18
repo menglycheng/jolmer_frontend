@@ -13,7 +13,7 @@ const Navbar = () => {
     <div>
       <header className="top-0 px-5 py-5 flex items-center justify-between max-w-screen-xl mx-auto z-20">
         <Link href="/" className="flex items-center text-primary-blue">
-          <Image
+          <img
             src="/icon/icon.png"
             width={60}
             height={60}
