@@ -22,6 +22,10 @@ body, html {
   font-family: 'Quicksand', sans-serif;
 }
 
+.change-color {
+  filter: brightness(0.75) saturate(10.5) ;
+}
+
 @layer components {
   .btn-hover {
     @apply  hover:text-primary-blue hover:border-primary-blue;

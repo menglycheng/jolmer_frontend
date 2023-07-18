@@ -4,10 +4,15 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
 import React from "react";
+import Head from "next/head";
 
 const about = () => {
   return (
     <div className="px-5 py-10 max-w-screen-xl mx-auto mt-10">
+      <Head>
+        <title>About us | Jolmer</title>
+        <link rel="icon" href="/icon/icon.png" />
+      </Head>
       <div className="flex justify-between lg:space-x-72 space-x-10">
         <div>
           <h1 className="font-bold text-2xl md:text-3xl text-primary-lowBlack">

@@ -1,8 +1,13 @@
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Custom404() {
   return (
     <div class="w-full h-screen bg-primary-lowGray flex items-center justify-center">
+      <Head>
+        <title>Error | Jolmer</title>
+        <link rel="icon" href="/icon/icon.png" />
+      </Head>
       <div class="container flex flex-col md:flex-row items-center justify-center px-5 text-primary-lowBlack">
         <div class="max-w-md">
           <div class="text-5xl md:text-7xl font-dark font-bold">404</div>

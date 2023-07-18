@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 
 const EmailVerified = () => {
   const router = useRouter();
@@ -49,6 +50,10 @@ const EmailVerified = () => {
 
   return (
     <div>
+      <Head>
+        <title>Confirm | Jolmer</title>
+        <link rel="icon" href="/icon/icon.png" />
+      </Head>
       <NavbarLoginRegister />
       <div className="px-5 py-0 max-w-screen-xl mx-auto mt-10 mb-6">
         <div className="flex flex-col items-center  space-y-4 sp">

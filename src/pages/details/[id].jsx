@@ -9,10 +9,15 @@ import {
 import { BuildingOfficeIcon, CalendarIcon } from "@heroicons/react/24/solid";
 import { getEventById } from "../api/Event";
 import Link from "next/link";
+import Head from "next/head";
 
 const detail = ({ event }) => {
   return (
     <div>
+      <Head>
+        <title>Event detail | Jolmer</title>
+        <link rel="icon" href="/icon/icon.png" />
+      </Head>
       <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
         <div className="bg-primary-lowBlack relative pb-[30%] md:pb-[20%]">
           <img

@@ -6,7 +6,7 @@ import {
   BuildingOfficeIcon,
   TrashIcon,
 } from "@heroicons/react/24/solid";
-
+import Head from "next/head";
 import EditProfile from "@/components/EditProfile";
 import BecomeOrganizer from "@/components/BecomeOrganizer";
 import { getEventUser } from "./api/Profile";
@@ -69,6 +69,10 @@ const profile = () => {
 
   return (
     <PrivateRoute>
+      <Head>
+        <title>Profile | Jolmer</title>
+        <link rel="icon" href="/icon/icon.png" />
+      </Head>
       {user ? (
         <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
           <div className="relative bg-primary-lowBlack flex flex-col md:flex-row py-5 justify-center md:justify-between px-5 md:px-12">

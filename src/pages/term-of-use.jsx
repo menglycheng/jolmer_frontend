@@ -1,8 +1,13 @@
 import React from "react";
+import Head from "next/head";
 
 const TermOfUse = () => {
   return (
     <div className="px-5 py-10 max-w-screen-xl mx-auto mt-10">
+      <Head>
+        <title>Term & Conditions | Jolmer</title>
+        <link rel="icon" href="/icon/icon.png" />
+      </Head>
       <div className="flex justify-between lg:space-x-72 space-x-10">
         <div>
           <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl  text-primary-lowBlack">
