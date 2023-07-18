@@ -9,6 +9,7 @@ import { loginApi } from "@/axios/auth/loginApi";
 import { useAuth } from "@/auth/auth";
 import GuestRoute from "@/components/Auth/GuestRoute";
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from "@/constants";
+import Head from "next/head";
 
 const Login = () => {
   const router = useRouter();
@@ -55,6 +56,10 @@ const Login = () => {
   return (
     <GuestRoute>
       <div>
+        <Head>
+          <title>Login | Jolmer</title>
+          <link rel="icon" href="/icon/icon.png" />
+        </Head>
         <NavbarLoginRegister />
         <div className="px-5 py-0 max-w-screen-xl mx-auto mt-10 mb-6">
           <div className="flex flex-col items-center space-y-4">

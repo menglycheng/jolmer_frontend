@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 // import { userRegisterState } from "../../recoil/register/atom";
 import { userRegisterState } from "@/recoil/register/atom";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const EmailVerification = () => {
   const userRegister = useRecoilValue(userRegisterState);
@@ -13,6 +14,10 @@ const EmailVerification = () => {
   return (
     <div>
       <NavbarLoginRegister />
+      <Head>
+        <title>Email verification | Jolmer</title>
+        <link rel="icon" href="/icon/icon.png" />
+      </Head>
       <div className="px-5 py-0 max-w-screen-xl mx-auto mt-10 mb-6">
         <div className="flex flex-col items-center  space-y-4 ">
           <EnvelopeIcon className="w-10 h-10 border border-primary-lowOrange rounded-lg p-1" />
