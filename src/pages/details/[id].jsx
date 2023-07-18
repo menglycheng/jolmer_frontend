@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   EyeIcon,
   HeartIcon,
@@ -10,8 +10,20 @@ import { BuildingOfficeIcon, CalendarIcon } from "@heroicons/react/24/solid";
 import { getEventById } from "../api/Event";
 import Link from "next/link";
 import Head from "next/head";
+import { AddViewEvent } from "../api/Event";
+import { useAuth } from "@/auth/auth";
 
 const detail = ({ event }) => {
+  const { getAccessToken } = useAuth();
+  const token = getAccessToken();
+
+  useEffect(() => {
+    const addView = async () => {
+      const response = await AddViewEvent(event.id, token);
+    };
+    addView();
+  }, []);
+
   return (
     <div>
       <Head>
@@ -70,7 +82,9 @@ const detail = ({ event }) => {
                   </div>
                   <div>
                     <p className="text-sm">Regisration Deadline</p>
-                    <p className="font-bold">{event.deadline}</p>
+                    <p className="font-bold">
+                      {event.deadline.substring(0, 10)}
+                    </p>
                   </div>
                 </div>
                 <Link
@@ -105,10 +119,21 @@ const detail = ({ event }) => {
   );
 };
 
-export async function getServerSideProps({ query }) {
+export const getServerSideProps = async (context) => {
   try {
-    const { id } = query;
-    const event = await getEventById(id);
+    const { id } = context.query;
+    // const event = await getEventById(id);
+    const data = await fetch(`https://api.jolmer.me/api/v1/events/${id}`);
+    const event = await data.json();
+
+    if (event.error) {
+      return {
+        redirect: {
+          destination: "/error", // Replace with your error page route
+          permanent: false,
+        },
+      };
+    }
 
     return {
       props: {
@@ -123,6 +148,6 @@ export async function getServerSideProps({ query }) {
       },
     };
   }
-}
+};
 
 export default detail;
