@@ -3,6 +3,7 @@ import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useAuth } from "@/auth/auth";
 import { PlusIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
 
 const Navbar = () => {
   const { user } = useAuth();
@@ -11,12 +12,21 @@ const Navbar = () => {
   return (
     <div>
       <header className="top-0 px-5 py-5 flex items-center justify-between max-w-screen-xl mx-auto z-20">
-        <Link
-          href="/"
-          className="flex items-center space-x-2 text-primary-blue"
-        >
-          <FaceSmileIcon className="w-9 h-9" />
-          <p className="font-bold text-lg md:text-xl">Jolmer</p>
+        <Link href="/" className="flex items-center text-primary-blue">
+          <Image
+            src="/icon/icon.png"
+            width={60}
+            height={60}
+            className="change-color rounded-full"
+          />
+
+          {/* <FaceSmileIcon className="w-9 h-9" /> */}
+          <div className="hidden md:inline">
+            <p className="font-bold text-lg md:text-4xl">Jolmer</p>
+            <p className="font-bold text-[7px]">
+              Opportunity await, come and see
+            </p>
+          </div>
         </Link>
         {user ? (
           <div className="flex items-center space-x-2">
