@@ -47,6 +47,7 @@ const profile = () => {
     } catch (error) {
       console.error(error);
       setLoading(false);
+      setError(true);
     }
   }
 
@@ -60,6 +61,7 @@ const profile = () => {
     } catch (error) {
       console.error(error);
       setLoading(false);
+      setError(true);
     }
   }
   // console.log(loading);
@@ -194,24 +196,44 @@ const profile = () => {
               loading ? (
                 <CardSkeleton />
               ) : error ? (
-                <div className="h-screen">
+                <div className="my-[20%]">
                   <div className="flex justify-center items-center h-full">
-                    <h1 className="text-4xl font-semibold">No Event</h1>
+                    <h1 className="text-xl md:text-3xl font-semibold">
+                      No Event
+                    </h1>
                   </div>
                 </div>
-              ) : (
+              ) : EventData.length > 0 ? (
                 <Card data={EventData} />
+              ) : (
+                <div className="my-[20%]">
+                  <div className="flex justify-center items-center h-full">
+                    <h1 className="text-xl md:text-3xl font-semibold">
+                      No Event
+                    </h1>
+                  </div>
+                </div>
               )
             ) : loading ? (
               <CardSkeleton />
             ) : error ? (
-              <div className="h-screen">
+              <div className="my-[20%]">
                 <div className="flex justify-center items-center h-full">
-                  <h1 className="text-4xl font-semibold">No Event</h1>
+                  <h1 className="text-xl md:text-3xl font-semibold">
+                    No Favorite Event
+                  </h1>
                 </div>
               </div>
-            ) : (
+            ) : FavoriteEventData.length > 0 ? (
               <CardEvent data={FavoriteEventData} />
+            ) : (
+              <div className="my-[20%]">
+                <div className="flex justify-center items-center h-full">
+                  <h1 className="text-xl md:text-3xl font-semibold">
+                    No Favorite Event
+                  </h1>
+                </div>
+              </div>
             )}
           </div>
         </div>

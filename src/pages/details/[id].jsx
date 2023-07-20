@@ -10,36 +10,57 @@ import {
   CalendarIcon,
   HeartIcon,
 } from "@heroicons/react/24/solid";
-import { getEventById } from "../api/Event";
+import { getEventById, getFavoriteEvent } from "../api/Event";
 import Link from "next/link";
 import Head from "next/head";
 import { addViewEvent } from "../api/Event";
 import { useAuth } from "@/auth/auth";
 import { addFavoriteEvent } from "../api/Event";
 import { deleteFavoriteEvent } from "../api/Event";
+import { useRouter } from "next/router";
 
 const detail = ({ event }) => {
-  const { getAccessToken } = useAuth();
+  const { user, getAccessToken } = useAuth();
   const token = getAccessToken();
   const [isSaved, setIsSaved] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const addView = async () => {
       const response = await addViewEvent(event.id, token);
     };
+    const favoriteEvent = async () => {
+      if (user) {
+        try {
+          const data = await getFavoriteEvent(user.username, token);
+          const events = data.map((item) => item.event);
+          const exists = events.some((item) => item.id === event.id);
+          setIsSaved(exists);
+        } catch (error) {
+          console.log("Error fetching favorite events:", error);
+        }
+      } else {
+        // User is not available (not logged in), set isSaved to false
+        setIsSaved(false);
+      }
+    };
+
     addView();
+    favoriteEvent();
   }, []);
 
   const handleFavorite = async () => {
     try {
+      if (!user) {
+        // User is not logged in, redirect to the login page
+        router.push("/login"); // Replace "/login" with your actual login page route
+        return;
+      }
+
       if (isSaved) {
-        // Call delete API
         await deleteFavoriteEvent(event.id, token);
         setIsSaved(false);
       } else {
-        // Call save API
-        console.log(event.id);
-        // await addViewEvent(event.id, token);
         await addFavoriteEvent(event.id, token);
         setIsSaved(true);
       }
@@ -47,23 +68,6 @@ const detail = ({ event }) => {
       console.log(error);
     }
   };
-
-  // const handleFavorite = async () => {
-  //   try {
-  //     fetch(
-  //       `https://api.jolmer.me/api/v1/favorite-events/add?eventId=${event.id}`,
-  //       {
-  //         method: "post",
-  //         headers: new Headers({
-  //           Authorization: `Bearer ${token}`,
-  //           "Content-Type": "application/x-www-form-urlencoded",
-  //         }),
-  //       }
-  //     );
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <div>
