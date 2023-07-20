@@ -20,10 +20,13 @@ const about = () => {
           </h1>
           <div className="h-[4px] rounded-full bg-primary-blue w-10 mt-2"></div>
           <p className="max-w-xl font-medium mt-5 text-sm md:text-base lg:text-lg">
-            Creating the digital platform where developers can build and improve
-            their skills to the next level in Tech world through the Hackathons
-            and Competition events that posted on our platform. We want to power
-            all the software developers to become world class engineers....
+            Jolmer, created by a group of seniors in Kirirom Institute of
+            Technology, is an informative website for enthusiastic students and
+            youngsters who are eager to find challenges and competitions as well
+            as volunteering activities. We also provide for organizations to
+            post information and announcements of the competitions and events.
+            Jolmer encourages khmer youths to be active in social activities and
+            networking to promote inclusion and a sense of community.
           </p>
         </div>
         <div className="hidden md:inline">
@@ -42,8 +45,10 @@ const about = () => {
           </h1>
         </div>
         <p className="font-medium mt-4 max-w-xs text-sm md:max-w-lg md:text-base lg:text-lg">
-          <span className="text-primary-yellow font-bold">“</span> Giving
-          everyone with everything they want to build their future{" "}
+          <span className="text-primary-yellow font-bold">“</span> Jolmer
+          provides a safe space for both youths and organizations to communicate
+          and connect. We hope to increase the bon of khmer youths and the
+          cambodian society and community as they are the future of cambodia.{" "}
           <span className="text-primary-yellow font-bold">”</span>
         </p>
       </div>
@@ -57,8 +62,9 @@ const about = () => {
         </div>
         <div className="flex items-center space-x-2 justify-end">
           <p className="font-medium mt-4 text-end max-w-xs md:max-w-lg text-sm md:text-base lg:text-lg ">
-            <span className="text-primary-yellow font-bold">“</span> Giving
-            everyone with everything they want to build their future{" "}
+            <span className="text-primary-yellow font-bold">“</span> Jolmer aims
+            to become a social networking platform where cambodian youths engage
+            in national activities and competitions.{" "}
             <span className="text-primary-yellow font-bold">”</span>
           </p>
         </div>
