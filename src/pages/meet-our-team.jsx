@@ -1,4 +1,4 @@
-import React from "react";
+import Head from "next/head";
 import { People } from "../../utils/Team";
 const meetOurTeam = () => {
   console.log(People);

@@ -1,4 +1,5 @@
-import React from "react";
+
+import Head from "next/head";
 const donation = () => {
   return (
     <div className="flex flex-col justify-center items-center">
