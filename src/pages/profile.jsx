@@ -15,29 +15,47 @@ import Card from "@/components/Card";
 import { useAuth } from "@/auth/auth";
 import PrivateRoute from "@/components/Auth/PrivateRoute";
 import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
+import { getFavoriteEvent } from "./api/Event";
+import CardEvent from "@/components/Homepage/CardEvent";
 
 const profile = () => {
   const [editProfileOpen, setEditProfileOpen] = useState(false);
   const [editOrganizerOpen, setEditOrganizerOpen] = useState(false);
-  const { user } = useAuth();
+  const { user, logout, getAccessToken } = useAuth();
   const [EventData, setEventData] = useState([]);
+  const [FavoriteEventData, setFavoriteEventData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [isFavoriteActive, setIsFavoriteActive] = useState(true);
   const [isMyPostActive, setIsMyPostActive] = useState(false);
-  // console.log(user);
-  const { logout } = useAuth();
+  const token = getAccessToken();
 
   useEffect(() => {
     if (isMyPostActive) {
       fetchEvent();
     }
-  }, [isMyPostActive]);
+    if (isFavoriteActive) {
+      fetchFavoriteEvent();
+    }
+  }, [isMyPostActive, isFavoriteActive]);
 
   async function fetchEvent() {
     try {
       const data = await getEventUser(user.username);
       setEventData(data);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  }
+
+  async function fetchFavoriteEvent() {
+    try {
+      const data = await getFavoriteEvent(user.username, token);
+      const events = data.map((item) => item.event);
+      setFavoriteEventData(events);
+      // console.log(events);
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -84,7 +102,6 @@ const profile = () => {
                   priority={false}
                   alt="profile"
                   src={user.profilePicture ?? "/profile.png"}
-                  // src="/profile.png"
                   className="rounded-full w-36 h-36 object-cover"
                 />
               </div>
@@ -185,8 +202,10 @@ const profile = () => {
               ) : (
                 <Card data={EventData} />
               )
+            ) : loading ? (
+              <CardSkeleton />
             ) : (
-              <p>Favorite</p>
+              <CardEvent data={FavoriteEventData} />
             )}
           </div>
         </div>

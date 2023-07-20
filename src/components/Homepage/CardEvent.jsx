@@ -9,9 +9,9 @@ const CardEvent = ({ data }) => {
 
   return (
     <div className="grid grid-flow-row sm:grid-cols-2 lg:grid-cols-4 gap-6 place-content-center mt-20">
-      {data.map((item) => (
+      {data.map((item, i) => (
         <Link
-          key={item.id}
+          key={i}
           href={`/details/${item.id}`}
           class="max-w-sm bg-white border border-gray-200 rounded-xl drop-shadow-md"
         >

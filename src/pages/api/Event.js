@@ -54,7 +54,7 @@ export async function deleteEvent(id) {
   }
 }
 
-export async function AddViewEvent(id, token) {
+export async function addViewEvent(id, token) {
   try {
     const headers = {
       Authorization: `Bearer ${token}`,
@@ -62,6 +62,57 @@ export async function AddViewEvent(id, token) {
 
     const response = await axios.post(
       `https://api.jolmer.me/api/v1/events/view?id=${id}`,
+      { headers }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
+
+export async function addFavoriteEvent(id, token) {
+  try {
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    const response = await axios.post(
+      `https://api.jolmer.me/api/v1/favorite-events/add?eventId=${id}`,
+      { headers }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
+
+export async function getFavoriteEvent(username, token) {
+  try {
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    const response = await axios.get(
+      `https://api.jolmer.me/api/v1/favorite-events?username=${username}`,
+      { headers }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
+
+export async function deleteFavoriteEvent(id, token) {
+  try {
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    const response = await axios.delete(
+      `https://api.jolmer.me/api/v1/favorite-events/delete?id=${id}`,
       { headers }
     );
     return response.data;
