@@ -204,6 +204,12 @@ const profile = () => {
               )
             ) : loading ? (
               <CardSkeleton />
+            ) : error ? (
+              <div className="h-screen">
+                <div className="flex justify-center items-center h-full">
+                  <h1 className="text-4xl font-semibold">No Event</h1>
+                </div>
+              </div>
             ) : (
               <CardEvent data={FavoriteEventData} />
             )}
