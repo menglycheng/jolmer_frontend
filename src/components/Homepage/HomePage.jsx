@@ -99,6 +99,7 @@ const HomePage = () => {
     indexOfFirstEvent,
     indexOfLastEvent
   );
+  const currentEvent = currentEvents.sort((a, b) => b.id - a.id);
   const totalEvents = filteredEvents.length;
 
   const handleSearch = (e) => {
@@ -183,7 +184,7 @@ const HomePage = () => {
             </div>
           </div>
         ) : (
-          <CardEvent data={currentEvents} />
+          <CardEvent data={currentEvent} />
         )}
       </div>
       <div className="mt-10 mx-auto flex justify-center">

@@ -1,28 +1,69 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   EyeIcon,
-  HeartIcon,
   MapPinIcon,
   UserGroupIcon,
   BuildingOffice2Icon,
 } from "@heroicons/react/24/outline";
-import { BuildingOfficeIcon, CalendarIcon } from "@heroicons/react/24/solid";
+import {
+  BuildingOfficeIcon,
+  CalendarIcon,
+  HeartIcon,
+} from "@heroicons/react/24/solid";
 import { getEventById } from "../api/Event";
 import Link from "next/link";
 import Head from "next/head";
-import { AddViewEvent } from "../api/Event";
+import { addViewEvent } from "../api/Event";
 import { useAuth } from "@/auth/auth";
+import { addFavoriteEvent } from "../api/Event";
+import { deleteFavoriteEvent } from "../api/Event";
 
 const detail = ({ event }) => {
   const { getAccessToken } = useAuth();
   const token = getAccessToken();
+  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     const addView = async () => {
-      const response = await AddViewEvent(event.id, token);
+      const response = await addViewEvent(event.id, token);
     };
     addView();
   }, []);
+
+  const handleFavorite = async () => {
+    try {
+      if (isSaved) {
+        // Call delete API
+        await deleteFavoriteEvent(event.id, token);
+        setIsSaved(false);
+      } else {
+        // Call save API
+        console.log(event.id);
+        // await addViewEvent(event.id, token);
+        await addFavoriteEvent(event.id, token);
+        setIsSaved(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // const handleFavorite = async () => {
+  //   try {
+  //     fetch(
+  //       `https://api.jolmer.me/api/v1/favorite-events/add?eventId=${event.id}`,
+  //       {
+  //         method: "post",
+  //         headers: new Headers({
+  //           Authorization: `Bearer ${token}`,
+  //           "Content-Type": "application/x-www-form-urlencoded",
+  //         }),
+  //       }
+  //     );
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div>
@@ -70,7 +111,12 @@ const detail = ({ event }) => {
               </div>
             </div>
             <div className="absolute top-5 right-5 hover:border-2  hover:text-primary-blue">
-              <button className="border-2 border-primary-lowBlack hover:border-primary-blue rounded-lg p-1">
+              <button
+                className={`border-2 border-primary-lowBlack hover:border-primary-blue rounded-lg p-1 ${
+                  isSaved ? "text-red-500" : "text-black"
+                }`}
+                onClick={handleFavorite}
+              >
                 <HeartIcon className="icon" />
               </button>
             </div>
