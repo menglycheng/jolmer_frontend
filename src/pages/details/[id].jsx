@@ -74,11 +74,11 @@ const detail = ({ event }) => {
       <Head>
         <title>Event detail | Jolmer</title>
         <link rel="icon" href="/icon/icon.png" />
-        <meta key="og-title" property="og:title" content={title} />
+        <meta key="og-title" property="og:title" content={event.title} />
         <meta
           key="og-description"
           property="og:description"
-          content={description}
+          content={event.description}
         />
       </Head>
       <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
