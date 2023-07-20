@@ -54,7 +54,7 @@ const Footer = () => {
               </button>
               <button
                 className="hover:text-primary-blue hover:underline"
-                href="/"
+                href="/donation"
               >
                 Donation
               </button>

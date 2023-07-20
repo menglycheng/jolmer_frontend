@@ -1,5 +1,6 @@
 import React from "react";
 import ABA from "../../public/image/ABA.jpg";
+
 const donation = () => {
   return (
     <div className="flex flex-col justify-center items-center">
@@ -8,11 +9,11 @@ const donation = () => {
           Donation
         </h2>
         <p className="mt-4 text-lg leading-8 text-gray-600">
-          We’re a dynamic group of individuals who are passionate about what we
-          do.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid dignissimos aspernatur iure nihil. Architecto sit, ipsum tempore accusantium, consectetur pariatur dolor tempora commodi quae voluptate necessitatibus perferendis dolores velit molestias.
+          Culpa eos iste nobis cupiditate sit a minima quia. Quas quae corrupti ad excepturi molestiae libero illo debitis modi hic ut quidem cumque, fugit sapiente, tempora mollitia eveniet sunt aliquid.
         </p>
       </div>
-      <img className="w-1/2" src={ABA.src} alt="" />
+      <img className="w-1/2" src={ABA} alt="ABA Logo" />
     </div>
   );
 };
