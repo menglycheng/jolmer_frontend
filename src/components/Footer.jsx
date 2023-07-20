@@ -52,12 +52,12 @@ const Footer = () => {
               >
                 Phone
               </button>
-              <button
+              <Link
                 className="hover:text-primary-blue hover:underline"
                 href="/donation"
               >
                 Donation
-              </button>
+              </Link>
             </div>
           </div>
         </div>
