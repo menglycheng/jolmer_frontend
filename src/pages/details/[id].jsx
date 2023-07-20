@@ -74,8 +74,30 @@ const detail = ({ event }) => {
       <Head>
         <title>Event detail | Jolmer</title>
         <link rel="icon" href="/icon/icon.png" />
-        <meta property="og:title" content={event.title} />
-        <meta property="og:description" content={event.description} />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://www.jolmer.me/details/${event.id}`}
+        />
+        <meta property="og:title" content="Title" />
+        <meta property="og:description" content="testest" />
+        <meta
+          property="og:image"
+          content="https://metatags.io/images/meta-tags.png"
+        />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://www.jolmer.me/details/179"
+        />
+        <meta property="twitter:title" content="Title" />
+        <meta property="twitter:description" content="testest" />
+        <meta
+          property="twitter:image"
+          content={`https://www.jolmer.me/details/${event.id}`}
+        />
       </Head>
       <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
         <div className="bg-primary-lowBlack relative pb-[30%] md:pb-[20%]">
