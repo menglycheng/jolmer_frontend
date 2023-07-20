@@ -1,5 +1,5 @@
-
 import Head from "next/head";
+import aba from "../../public/image/aba.jpg";
 const donation = () => {
   return (
     <div className="flex flex-col justify-center items-center">
@@ -21,7 +21,7 @@ const donation = () => {
           sapiente, tempora mollitia eveniet sunt aliquid.
         </p>
       </div>
-      <img className="w-1/2" src="/image/ABA.jpg" alt="ABA Logo" />
+      <img className="w-1/2" src={aba} alt="ABA Logo" />
     </div>
   );
 };
