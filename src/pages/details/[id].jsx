@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import {
   EyeIcon,
-  HeartIcon,
   MapPinIcon,
   UserGroupIcon,
   BuildingOffice2Icon,
 } from "@heroicons/react/24/outline";
-import { BuildingOfficeIcon, CalendarIcon } from "@heroicons/react/24/solid";
+import {
+  BuildingOfficeIcon,
+  CalendarIcon,
+  HeartIcon,
+} from "@heroicons/react/24/solid";
 import { getEventById } from "../api/Event";
 import Link from "next/link";
 import Head from "next/head";
@@ -36,6 +39,7 @@ const detail = ({ event }) => {
       } else {
         // Call save API
         console.log(event.id);
+        // await addViewEvent(event.id, token);
         await addFavoriteEvent(event.id, token);
         setIsSaved(true);
       }
@@ -43,6 +47,23 @@ const detail = ({ event }) => {
       console.log(error);
     }
   };
+
+  // const handleFavorite = async () => {
+  //   try {
+  //     fetch(
+  //       `https://api.jolmer.me/api/v1/favorite-events/add?eventId=${event.id}`,
+  //       {
+  //         method: "post",
+  //         headers: new Headers({
+  //           Authorization: `Bearer ${token}`,
+  //           "Content-Type": "application/x-www-form-urlencoded",
+  //         }),
+  //       }
+  //     );
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div>

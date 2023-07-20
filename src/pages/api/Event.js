@@ -71,20 +71,33 @@ export async function addViewEvent(id, token) {
   }
 }
 
+// export async function addFavoriteEvent(id, token) {
+//   try {
+//     const headers = {
+//       Authorization: `Bearer ${token}`,
+//     };
+
+//     const response = await axios.post(
+//       `https://api.jolmer.me/api/v1/favorite-events/add?eventId=${id}`,
+//       { headers }
+//     );
+//     return response.data;
+//   } catch (error) {
+//     console.error("Error:", error);
+//     throw error;
+//   }
+// }
+
 export async function addFavoriteEvent(id, token) {
   try {
-    const headers = {
-      Authorization: `Bearer ${token}`,
-    };
-
-    const response = await axios.post(
-      `https://api.jolmer.me/api/v1/favorite-events/add?eventId=${id}`,
-      { headers }
-    );
-    return response.data;
+    fetch(`https://api.jolmer.me/api/v1/favorite-events/add?eventId=${id}`, {
+      method: "post",
+      headers: new Headers({
+        Authorization: `Bearer ${token}`,
+      }),
+    });
   } catch (error) {
-    console.error("Error:", error);
-    throw error;
+    console.log(error);
   }
 }
 
