@@ -21,7 +21,7 @@ const donation = () => {
           sapiente, tempora mollitia eveniet sunt aliquid.
         </p>
       </div>
-      <img className="w-1/2" src={aba} alt="ABA Logo" />
+      <img className="w-1/2" src={aba.src} alt="ABA Logo" />
     </div>
   );
 };
