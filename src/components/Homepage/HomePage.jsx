@@ -108,7 +108,7 @@ const HomePage = () => {
   };
   return (
     <div className="px-5 max-w-screen-xl mx-auto flex flex-col min-h-screen">
-      <div className="flex flex-col md:flex-row justify-center md:justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-center md:justify-between items-center mb-10">
         <div className="flex justify-between items-center md:w-[70%]">
           <h3 className="hidden lg:inline text-2xl text-primary-lowBlack font-bold">
             Explore
