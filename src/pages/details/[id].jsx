@@ -79,24 +79,18 @@ const detail = ({ event }) => {
         <meta
           property="og:url"
           content={`https://www.jolmer.me/details/${event.id}`}
+          key="og-url"
         />
-        <meta property="og:title" content="Title" />
-        <meta property="og:description" content="testest" />
+        <meta property="og:title" content={event.title} key="og-title" />
+        <meta
+          property="og:description"
+          content={event.description}
+          key="og-description"
+        />
         <meta
           property="og:image"
           content="https://metatags.io/images/meta-tags.png"
-        />
-
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:url"
-          content="https://www.jolmer.me/details/179"
-        />
-        <meta property="twitter:title" content="Title" />
-        <meta property="twitter:description" content="testest" />
-        <meta
-          property="twitter:image"
-          content={`https://www.jolmer.me/details/${event.id}`}
+          key="og-image"
         />
       </Head>
       <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
