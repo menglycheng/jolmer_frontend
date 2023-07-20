@@ -11,8 +11,7 @@ const Footer = () => {
               Jolmer
             </h3>
             <p className="text-primary-lowRed font-medium text-sm max-w-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
-              illum quo esse impedit
+              Giving everyone with everything they want to build their future
             </p>
           </div>
           <div className="lg:px-10 md:px-5">
@@ -35,6 +34,12 @@ const Footer = () => {
                 href="/about"
               >
                 About us
+              </Link>
+              <Link
+                className="hover:text-primary-blue hover:underline"
+                href="/meet-our-team"
+              >
+                Meet Our Team
               </Link>
             </div>
           </div>
