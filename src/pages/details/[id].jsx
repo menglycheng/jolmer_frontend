@@ -74,12 +74,8 @@ const detail = ({ event }) => {
       <Head>
         <title>Event detail | Jolmer</title>
         <link rel="icon" href="/icon/icon.png" />
-        <meta key="og-title" property="og:title" content={event.title} />
-        <meta
-          key="og-description"
-          property="og:description"
-          content={event.description}
-        />
+        <meta property="og:title" content={event.title} />
+        <meta property="og:description" content={event.description} />
       </Head>
       <div className="md:px-5 max-w-screen-xl mx-auto z-20 ">
         <div className="bg-primary-lowBlack relative pb-[30%] md:pb-[20%]">
